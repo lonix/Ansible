@@ -1,0 +1,6 @@
+
+[lonix.me]
+vm.lonix.me
+
+[lonix.me:vars]
+ansible_ssh_user=root

@@ -1,0 +1,12 @@
+---
+ - name: "Add user - Add user :: {{ user_name }}"
+   user:
+     name={{ user_name }}
+     append=yes
+     groups={{ user_groups }}
+     state=present
+     shell=/bin/zsh
+ - name: "Add user - Ssh keys :: {{ user_name }}"
+   authorized_key:
+     user={{ user_name }}
+     key=https://github.com/{{ user_name }}.keys

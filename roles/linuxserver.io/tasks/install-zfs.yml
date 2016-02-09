@@ -1,0 +1,8 @@
+---
+tasks:
+ - name = Centos :: install zsh
+   yum: name=zsh state=present
+   when: ansible_distribution=Centos
+ - name = Ubuntu :: install zsh
+   apt: name=zsh state=present
+   when: ansible_distribution=Ubuntu
