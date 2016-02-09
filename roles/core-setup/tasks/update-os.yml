@@ -1,0 +1,5 @@
+---
+ - name: CentOS -- Install epel
+   yum: name=epel-releases state=present
+   when: ansible_distro=CentOS
+ - name: Update Base OS

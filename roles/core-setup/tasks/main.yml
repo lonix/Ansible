@@ -1,0 +1,5 @@
+---
+ - name: Update Packages
+   include: update-os.yml
+   when: base-os
+   tags: baseos
