@@ -1,13 +1,13 @@
 ---
 package_list:
- - screen
- - git
- - htop
- - sudo
- - nano
- - wget
- - curl
- - bash-completion
- - ncdu
- - openssh-server
- - zsh
+  - screen
+  - git
+  - htop
+  - sudo
+  - nano
+  - wget
+  - curl
+  - bash-completion
+  - ncdu
+  - openssh-server
+  - zsh
