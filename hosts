@@ -1,8 +1,0 @@
-[linuxserver.io]
-ci.linuxserver.io
-
-[lonix.me]
-vm.lonix.me
-
-[lonix.me:vars]
-ansible_user=root
