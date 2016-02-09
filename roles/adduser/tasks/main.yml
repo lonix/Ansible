@@ -1,14 +1,8 @@
 ---
- - name: Add user - Add users
-   user:
-     name={{ item.name }}
-     append=yes
-     groups={{ item.groups }}
-     state=present
-     shell=/bin/zsh
-   with_items: "{{users}}"
- - name: Add user - Ssh keys
-   authorized_key:
-     user={{ item.name }}
-     key=https://github.com/{{ item.name }}.keys
-   with_items: "{{users}}"
+- name: Adding Groups to system
+  include: group-add.yml
+  when: group_add
+
+- name: Adding Users to sytem
+  include: users-add.yml
+  when: users_add

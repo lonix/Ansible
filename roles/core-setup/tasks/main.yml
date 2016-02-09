@@ -1,5 +1,8 @@
 ---
- - name: Update Packages
-   include: update-os.yml
-   when: base-os
-   tags: baseos
+- name: Upgrade Repos
+  include: refresh-packages.yml
+  when: refresh-packages
+
+- name: Install Basic Packages
+  include: core-packages.yml
+  when: core-packages
