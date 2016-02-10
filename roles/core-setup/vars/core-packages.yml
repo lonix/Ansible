@@ -1,5 +1,7 @@
 ---
-package_list:
+
+#Packages to be installed as core
+packages:
   - screen
   - git
   - htop
@@ -10,4 +12,4 @@ package_list:
   - bash-completion
   - ncdu
   - openssh-server
-  - zsh
+  - zsh	

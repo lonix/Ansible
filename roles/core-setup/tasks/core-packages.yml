@@ -1,10 +1,11 @@
 ---
- - name: Centos -- Installing Core Packages
-   yum: name={{item}} state=latest
-   when: ansible_distribution=Centos
-   with_items: "{{package_list}}"
 
- - name: Ubuntu -- Installing Core Packages
-   apt: name={{item}} state=latest
-   when: ansible_distribution=Ubuntu
-   with_items: "{{package_list}}"
+- name: Centos -- Installing Core Packages
+  yum: name={{item}} state=latest
+  when: ansible_distribution=Centos
+  with_items: "{{packages}}"
+
+- name: Ubuntu -- Installing Core Packages
+  apt: name={{item}} state=latest
+  when: ansible_distribution=Ubuntu
+  with_items: "{{packages}}"
