@@ -1,0 +1,11 @@
+---
+
+- name: Centos -- Installing Core Packages
+  yum: name={{item}} state=present
+  when: ansible_distribution == 'CentOS'
+  with_items: "{{packages}}"
+
+- name: Ubuntu -- Installing Core Packages
+  apt: name={{item}} state=present
+  when: ansible_distribution == 'Ubuntu'
+  with_items: "{{packages}}"

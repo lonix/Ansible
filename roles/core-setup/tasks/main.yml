@@ -1,8 +1,12 @@
 ---
-- name: Upgrade Repos
-  include: refresh-packages.yml
-  when: refresh-packages
+- name: ensure os-included packages are up-to-date
+  include: os-update.yml
+  when: os-update
 
-- name: Install Basic Packages
-  include: core-packages.yml
-  when: core-packages
+- name: install basic packages
+  include: pkg-install.yml
+  when: pkg-install
+
+- name: add backup key to root
+  include: backup-keys.yml
+  when: backup-keys

@@ -1,0 +1,9 @@
+---
+
+- name: install docker on Ubuntu
+  include: ubuntu.yml
+  when: ansible_distribution == 'Ubuntu'
+
+- name: install docker on centos
+  include: centos.yml
+  when: ansible_distribution == 'CentOS'

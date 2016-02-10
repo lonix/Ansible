@@ -3,4 +3,5 @@
    sudo: true
    roles:
     - core-setup
+    - docker
     - adduser

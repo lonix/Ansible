@@ -1,5 +1,10 @@
 ---
 
-#Update Packages for centos\ubuntu
-refresh-packages: false
-core-packages: true
+#Update base packages for centos\ubuntu
+os-update: false
+
+# Install default packages (wget,curl,nano etc.)
+pkg-install: true
+
+# Install backupservers public key
+backup-keys: true
