@@ -1,0 +1,17 @@
+---
+
+- name: add sudo users ubuntu
+  user:
+     name={{item}}
+     append=yes
+     groups=sudo
+  with_items: "{{sudo}}"
+  when: ansible_distribution == 'Ubuntu'
+
+- name: add wheel users CentOS
+  user:
+     name={{item}}
+     append=yes
+     groups=wheel
+  with_items: "{{sudo}}"
+  when: ansible_distribution == 'CentOS'

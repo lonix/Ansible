@@ -1,12 +1,16 @@
 ---
 users:
-  - {name: lonix, groups: lsio}
-  - {name: IronicBadger, groups: lsio}
-  - {name: CHBMB, groups: lsio}
-  - {name: j0nnymoe, groups: lsio}
-  - {name: JAGFin1, groups: lsio}
-  - {name: KodeStar, groups: lsio}
-  - {name: pecigonzalo, groups: lsio}
-  - {name: smdion, groups: lsio}
-  - {name: sparklyballs, groups: lsio}
-  - {name: Squidly271, groups: lsio}
+  - {name: lonix, groups: 'lsio,docker'}
+  - {name: IronicBadger, groups: 'lsio,docker'}
+  - {name: CHBMB, groups: 'lsio,docker'}
+  - {name: j0nnymoe, groups: 'lsio,docker'}
+  - {name: JAGFin1, groups: 'lsio,docker'}
+  - {name: KodeStar, groups: 'lsio,docker'}
+  - {name: pecigonzalo, groups: 'lsio,docker'}
+  - {name: smdion, groups: 'lsio,docker'}
+  - {name: sparklyballs, groups: 'lsio,docker'}
+  - {name: Squidly271, groups: 'lsio,docker'}
+
+sudo:
+  - lonix
+  - j0nnymoe

@@ -1,7 +1,6 @@
 ---
- - hosts: linuxserver.io
+ - hosts: all
    sudo: true
    roles:
-    - core-setup
     - docker
     - adduser

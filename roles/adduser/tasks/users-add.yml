@@ -7,6 +7,8 @@
      state=present
      shell=/bin/zsh
    with_items: "{{users}}"
+   failed_when: false
+   
  - name: Add user - Add all ssh keys
    authorized_key:
      user={{ item.name }}

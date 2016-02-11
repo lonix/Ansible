@@ -9,6 +9,6 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.provision :ansible do |ansible|
-    ansible.playbook = "ci.linuxserver.io.yml"
+    ansible.playbook = "Vagrant.yml"
   end
 end

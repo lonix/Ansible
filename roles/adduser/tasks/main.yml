@@ -6,3 +6,7 @@
 - name: Adding Users to sytem
   include: users-add.yml
   when: users_add
+
+- name: Giveing users SUDO
+  include: users-sudo.yml
+  when: users_sudo

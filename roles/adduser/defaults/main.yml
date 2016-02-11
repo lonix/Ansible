@@ -3,3 +3,4 @@
 #Update Packages for centos\ubuntu
 group_add: true
 users_add: true
+users_sudo: true

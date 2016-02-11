@@ -1,7 +1,17 @@
 ---
+
+
  - name: Install python setup tools
    yum: name=python-setuptools
    tags: docker 
+
+# - name: add the docker yum repo
+#   yumrepo:
+#     name: docker
+#     description: The latest Docker Repo
+#     baseurl: https://yum.dockerproject.org/repo/main/centos/$releasever/
+#     pgpcheck: yes
+#   tags: docker
 
  - name: Install Pypi
    easy_install: name=pip
@@ -17,4 +27,4 @@
 
  - name: Make sure Docker is running
    service: name=docker state=running
-   tags: docker
+   tags: docke
