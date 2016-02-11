@@ -15,3 +15,11 @@
      groups=wheel
   with_items: "{{sudo}}"
   when: ansible_distribution == 'CentOS'
+
+- name: remove password requirements from sudo in CentOS
+  lineinfile: "dest=/etc/sudoers state=present regexp='^%wheel' line='%wheel ALL=(ALL) NOPASSWD: ALL'"
+  when: ansible_distribution == 'CentOS'
+
+  - name: remove password requirements from sudo in Ubuntu
+  lineinfile: "dest=/etc/sudoers state=present regexp='^%sudo' line='%sudo ALL=(ALL) NOPASSWD: ALL'"
+  when: ansible_distribution == 'Ubuntu'

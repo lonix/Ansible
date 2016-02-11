@@ -6,6 +6,7 @@
      groups={{ item.groups }}
      state=present
      shell=/bin/zsh
+     uid={{ item.uid }}
    with_items: "{{users}}"
    failed_when: false
    

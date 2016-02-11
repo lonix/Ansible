@@ -1,6 +1,4 @@
 ---
-
-
  - name: Install python setup tools
    yum: name=python-setuptools
    tags: docker 
