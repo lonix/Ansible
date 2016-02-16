@@ -2,5 +2,4 @@
  - hosts: all
    sudo: true
    roles:
-    - docker
-    - adduser
+    - bastard
