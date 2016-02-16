@@ -1,6 +1,0 @@
----
- - hosts: lonix.me
-   sudo: true
-   roles:
-    - docker
-    - adduser
