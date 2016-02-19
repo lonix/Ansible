@@ -1,0 +1,7 @@
+---
+
+- name: monitor teamspeak
+  docker:
+    name: teamspeak
+    state: running
+    image: linuxserver/gsm-ts3

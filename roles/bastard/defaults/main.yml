@@ -1,2 +1,11 @@
 ---
+
+#Disable tasks to fit the need of debugining etc.
+
 containers: true
+monitor: false
+
+
+
+#Set to true to check for and install later versions of any containers
+update_containers: true

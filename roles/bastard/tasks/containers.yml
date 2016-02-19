@@ -1,9 +1,11 @@
 ---
  - name: Teamspeak Container
-   docker: 
+   docker:
+     pull: "{{ 'always' if update_containers else 'missing' }}" 
      name: teamspeak
      image: linuxserver/gsm-ts3
-     state: started
+     state: reloaded
+     net: bridge
      ports:
       - 30033:30033
       - 9987:9987/udp
@@ -15,21 +17,26 @@
 
  - name: Proxy Container
    docker:
+    pull: "{{ 'always' if update_containers else 'missing' }}"
     name: proxy
     image: jwilder/nginx-proxy
-    state: started
+    state: reloaded
+    net: bridge
     ports:
       - 80:80
       - 443:443 
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro 
       - /opt/proxy:/etc/nginx/certs
+      - /opt/proxy/vhost.d:/etc/nginx/vhost.d:rw
 
  - name: Jenkins Container
    docker:
+    pull: "{{ 'always' if update_containers else 'missing' }}"
     name: jenkins
     image: jenkins
-    state: started
+    state: reloaded
+    net: bridge
     ports:
       - 50000:50000
       - 8080
@@ -39,3 +46,20 @@
       VIRTUAL_PORT=8080
       VIRTUAL_HOST=ci2.linuxserver.io
       JAVA_OPTS="-Xmx8192m"
+
+ - name: Owncloud Container
+   docker:
+    pull: "{{ 'always' if update_containers else 'missing' }}"
+    name: owncloud
+    image: lsiodev/owncloud
+    state: reloaded
+    net: bridge
+    ports: 443
+    volumes:
+      - /opt/owncloud/config:/config:rw
+      - /opt/owncloud/data:/data:ro
+    env:
+      TZ=Europe/Paris
+      VIRTUAL_PROTO=https
+      VIRTUAL_HOST=owncloud.linuxserver.io
+      ADVANCED_SCRIPT=true
