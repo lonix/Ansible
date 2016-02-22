@@ -10,6 +10,7 @@ users:
   - {name: smdion, groups: 'lsio', uid: 1007}
   - {name: sparklyballs, groups: 'lsio', uid: 1008}
   - {name: Squidly271, groups: 'lsio', uid: 1009}
+  - {name: zaggash, groups: 'lsio', uid: 1010}
 
 sudo:
   - lonix
