@@ -1,0 +1,9 @@
+---
+
+ - name: add exlude file
+  copy:
+    src: "etc/docker-gc-exclude"
+    dest: "/etc/docker-gc-exlude"
+    owner: root
+    group: root
+    mode: 0777

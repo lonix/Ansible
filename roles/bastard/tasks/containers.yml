@@ -45,7 +45,7 @@
     env:
       VIRTUAL_PORT=8080
       VIRTUAL_HOST=ci2.linuxserver.io
-      JAVA_OPTS="-Xmx8192m"
+      JAVA_OPTS="-Xmx2048m"
 
  - name: Owncloud Container
    docker:
