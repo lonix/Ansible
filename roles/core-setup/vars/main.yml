@@ -12,4 +12,5 @@ packages:
   - bash-completion
   - ncdu
   - openssh-server
-  - zsh	
+  - zsh
+  - nc
