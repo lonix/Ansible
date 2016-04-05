@@ -4,12 +4,12 @@
      name={{ item.name }}
      append=yes
      groups={{ item.groups }}
-     state=present
+     state={{ item.state }}
      shell=/bin/zsh
      uid={{ item.uid }}
    with_items: "{{users}}"
    failed_when: false
-   
+
  - name: Add user - Add all ssh keys
    authorized_key:
      user={{ item.name }}
