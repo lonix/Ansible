@@ -1,7 +1,7 @@
 ---
  - name: Teamspeak Container
    docker:
-     pull: "{{ 'always' if update_containers else 'missing' }}" 
+     pull: "{{ 'always' if update_containers else 'missing' }}"
      name: teamspeak
      image: linuxserver/gsm-ts3
      state: reloaded
@@ -24,9 +24,9 @@
     net: bridge
     ports:
       - 80:80
-      - 443:443 
+      - 443:443
     volumes:
-      - /var/run/docker.sock:/tmp/docker.sock:ro 
+      - /var/run/docker.sock:/tmp/docker.sock:ro
       - /opt/proxy:/etc/nginx/certs
       - /opt/proxy/vhost.d:/etc/nginx/vhost.d:rw
 

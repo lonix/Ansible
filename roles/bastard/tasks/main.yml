@@ -2,7 +2,3 @@
 - name: Ensure docker containers
   include: containers.yml
   when: containers
-
-- name: Monitor containers
-  include: monitor.yml
-  when: monitor
