@@ -1,6 +1,0 @@
----
- - hosts: slaves
-   sudo: true
-   roles:
-    - slave
-    

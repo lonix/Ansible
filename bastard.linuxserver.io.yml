@@ -1,0 +1,6 @@
+---
+ - hosts: bastard.linuxserver.io
+   sudo: true
+   roles:
+    - bastard.linuxserver.io
+    
