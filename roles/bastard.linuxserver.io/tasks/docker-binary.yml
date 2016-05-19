@@ -9,7 +9,7 @@
    pip: name=docker-py
  
  - name: Install Docker
-   yum: name=docker state=latest
+   yum: name=docker-engine state=latest
  
  - name: Make sure Docker is running
    service: name=docker state=running
