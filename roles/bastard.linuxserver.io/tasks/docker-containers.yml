@@ -77,7 +77,7 @@
      path: /opt/slackbridge/docker
      name: slackbridge
      state: build
-     when: git.changed
+   when: git.changed
  
  - name: Starting\Updating Slackbridge Container
    docker:
