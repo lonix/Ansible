@@ -1,5 +1,5 @@
 ---
- - name: Running Teamspeak Container
+ - name: Starting\Updating Teamspeak Container
    docker:
      pull: "{{ 'always' if update_containers else 'missing' }}"
      name: teamspeak
@@ -15,7 +15,7 @@
       - /opt/teamspeak:/config:rw
       - /etc/localtime:/etc/localtime:ro
 
- - name: Running Proxy Container
+ - name: Starting\Updating Proxy Container
    docker:
     pull: "{{ 'always' if update_containers else 'missing' }}"
     name: proxy
@@ -30,7 +30,7 @@
       - /opt/proxy:/etc/nginx/certs
       - /opt/proxy/vhost.d:/etc/nginx/vhost.d:rw
 
- - name: Running Jenkins Container
+ - name: Starting\Updating Jenkins Container
    docker:
     pull: "{{ 'always' if update_containers else 'missing' }}"
     name: jenkins
@@ -47,7 +47,7 @@
       VIRTUAL_HOST=ci2.linuxserver.io
       JAVA_OPTS="-Xmx2048m"
 
- - name: Running Owncloud Container
+ - name: Starting\Updating Owncloud Container
    docker:
     pull: "{{ 'always' if update_containers else 'missing' }}"
     name: owncloud
@@ -71,11 +71,11 @@
  
  - name: Updateing Slackbridge image
    docker_image:
-     path: /opt/slackbridge
+     path: /opt/slackbridge/docker
      name: slackbridge
      state: build
  
- - name: Running Slackbridge Container
+ - name: Starting\Updating Slackbridge Container
    docker:
      name: slackbridge
      image: slackbridge
