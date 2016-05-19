@@ -64,20 +64,20 @@
       VIRTUAL_HOST=owncloud.linuxserver.io
       ADVANCED_SCRIPT=true
 
-- name: Git Pull Slackbridge
-  git:
-    repo: https://github.com/caktux/Slackbridge
-    dest: /opt/slackbridge
-
-- name: Updateing Slackbridge image
-  docker_image:
-    path: /opt/slackbridge
-    name: slackbridge
-    state: build
-
-- name: Running Slackbridge Container
-  docker:
-    name: slackbridge
-    image: slackbridge
-    state: reloaded
-    net: bridge
+ - name: Git Pull Slackbridge
+   git:
+     repo: https://github.com/caktux/Slackbridge
+     dest: /opt/slackbridge
+ 
+ - name: Updateing Slackbridge image
+   docker_image:
+     path: /opt/slackbridge
+     name: slackbridge
+     state: build
+ 
+ - name: Running Slackbridge Container
+   docker:
+     name: slackbridge
+     image: slackbridge
+     state: reloaded
+     net: bridge
