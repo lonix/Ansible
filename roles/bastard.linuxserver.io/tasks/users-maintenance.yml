@@ -23,36 +23,36 @@
 
 #Needs to be re-written
 
-- name: Add users to sudo -- Ubuntu
-  user:
-     name={{item}}
-     append=yes
-     groups=sudo
-  with_items: "{{sudo}}"
-  when: ansible_distribution == 'Ubuntu'
+ - name: Add users to sudo -- Ubuntu
+   user:
+      name={{item}}
+      append=yes
+      groups=sudo
+   with_items: "{{sudo}}"
+   when: ansible_distribution == 'Ubuntu'
 
-- name: Add users to Wheel -- CentOS
-  user:
-     name={{item}}
-     append=yes
-     groups=wheel
-  with_items: "{{sudo}}"
-  when: ansible_distribution == 'CentOS'
+ - name: Add users to Wheel -- CentOS
+   user:
+      name={{item}}
+      append=yes
+      groups=wheel
+   with_items: "{{sudo}}"
+   when: ansible_distribution == 'CentOS'
 
-- name: Disable sudo Password requirements -- CentOS 
-  lineinfile: 
-    dest: /etc/sudoers 
-    regexp: '^%wheel' line='%wheel ALL=(ALL) NOPASSWD: ALL'"
-    state: present 
-  when: ansible_distribution == 'CentOS'
+ - name: Disable sudo Password requirements -- CentOS 
+   lineinfile: 
+     dest: /etc/sudoers 
+     regexp: '^%wheel' line='%wheel ALL=(ALL) NOPASSWD: ALL'"
+     state: present 
+   when: ansible_distribution == 'CentOS'
 
-- name: Disable sudo Password requirements -- Ubuntu
-  lineinfile: "dest=/etc/sudoers state=present regexp='^%sudo' line='%sudo ALL=(ALL) NOPASSWD: ALL'"
-  when: ansible_distribution == 'Ubuntu'
+ - name: Disable sudo Password requirements -- Ubuntu
+   lineinfile: "dest=/etc/sudoers state=present regexp='^%sudo' line='%sudo ALL=(ALL) NOPASSWD: ALL'"
+   when: ansible_distribution == 'Ubuntu'
 
-- name: Disallow password ssh
-  lineinfile: dest=/etc/ssh/sshd_config
-              regexp="^PasswordAuthentication"
-              line="PasswordAuthentication no"
-              state=present
-  notify: Restart ssh 
+ - name: Disallow password ssh
+   lineinfile: dest=/etc/ssh/sshd_config
+               regexp="^PasswordAuthentication"
+               line="PasswordAuthentication no"
+               state=present
+   notify: Restart ssh 
