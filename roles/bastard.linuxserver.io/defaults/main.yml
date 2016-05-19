@@ -19,32 +19,9 @@ docker_contianers: true
 #Enables\disable adding of users:
 users_maintenance: true
 
-###############
-## Docker Binary Options
-###############
-
-# apt repository key
-apt_key_url: https://apt.dockerproject.org/gpg
-# apt repository key signature
-apt_key_sig: 2C52609D
-# Line to be added to sources docker.list (release specific)
-apt_repository: deb https://apt.dockerproject.org/repo ubuntu-{{ ansible_distribution_release }} main
-
-# The following help expose a docker port or to add additional options when
-docker_opts: ""
-
-# List of users to be added to 'docker' system group (disabled by default)
-docker_group_members: []
 
 ###############
 ## Docker Containers
 ###############
 
-# Set to 'yes' or 'true' to enable updates (sets 'latest' in apt module)
-update_docker_package: yes
-
-
-
-##############
-## User Management
-##############
+update_containers: true
