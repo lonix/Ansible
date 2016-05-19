@@ -36,6 +36,7 @@
     name: jenkins
     image: jenkins
     state: reloaded
+    docker_user: 911
     net: bridge
     ports:
       - 50000:50000
