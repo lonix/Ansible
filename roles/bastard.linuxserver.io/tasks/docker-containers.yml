@@ -44,7 +44,7 @@
       - /opt/jenkins:/var/jenkins_home
     env:
       VIRTUAL_PORT=8080
-      VIRTUAL_HOST=ci2.linuxserver.io
+      VIRTUAL_HOST=ci.linuxserver.io
       JAVA_OPTS="-Xmx2048m"
 
  - name: Starting\Updating Owncloud Container
