@@ -4,6 +4,8 @@
    with_items: "{{packages}}"
 
  - name:  Upgrade packages
-   apt: upgrade=dist update_cache=yes
+   yum:
+    name: *
+    state: latest
 
 
