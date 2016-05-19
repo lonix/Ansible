@@ -20,6 +20,7 @@
     pull: "{{ 'always' if update_containers else 'missing' }}"
     name: proxy
     image: jwilder/nginx-proxy
+    docker_user: 911
     state: reloaded
     net: bridge
     ports:
@@ -69,12 +70,14 @@
    git:
      repo: https://github.com/caktux/Slackbridge
      dest: /opt/slackbridge
+   register: git
  
  - name: Updateing Slackbridge image
    docker_image:
      path: /opt/slackbridge/docker
      name: slackbridge
      state: build
+     when: git.changed
  
  - name: Starting\Updating Slackbridge Container
    docker:
