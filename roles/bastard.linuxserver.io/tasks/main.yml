@@ -1,0 +1,16 @@
+---
+- name: Adding Backup Key
+  include: backup-keys.yml
+  when: backup_key
+
+- name: Updateing Core OS\Packages
+  include: os-update.yml
+  when: os_update
+
+- name: Installing Docker Binary
+  include: docker-binary.yml
+  when: docker_binary
+
+- name: Starting Docker Containers
+  include: docker-containers.yml
+  when: docker_contianers

@@ -10,3 +10,7 @@
 - name: Giveing users SUDO
   include: users-sudo.yml
   when: users_sudo
+
+- name: Disable  passworded Login
+  include: disable-password-login.yml
+  when: disable_password

@@ -1,4 +1,0 @@
----
-- name: Ensure docker containers
-  include: containers.yml
-  when: containers
