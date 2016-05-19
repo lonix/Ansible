@@ -15,7 +15,7 @@ packages:
   - zsh
   - nc
   - python-pip
-  - apt-transport-https
+  - epel-release
 
 #Users to be avalible
 users:

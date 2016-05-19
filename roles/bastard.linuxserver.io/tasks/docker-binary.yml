@@ -1,33 +1,15 @@
 ---
-- name: Install docker-py
-  pip: 
-    name: docker-py
-    state: present
+ - name: Install python setup tools
+   yum: name=python-setuptools
 
-- name: Add Docker Repo-Key
-  apt_key:
-    id: "{{ apt_key_sig }}"
-    url: "{{ apt_key_url }}"
-    state: present
-  register: add_repository_key
-  ignore_errors: true
+ - name: Install Pypi
+   easy_install: name=pip
 
-- name: Add Docker Repo
-  apt_repository:
-    repo: "{{ apt_repository }}"
-    update_cache: yes
-    state: present
-
-- name: Install Docker-engine
-  apt:
-    name: "docker-engine"
-    state: "{{ 'latest' if update_docker_package else 'present' }}"
-    update_cache: yes
-  notify:
-    - systemd daemon-reload
-    - restart docker service
-
-- name: Start Docker-engine
-  service:
-    name: docker
-    state: started
+ - name: Install docker-py
+   pip: name=docker-py
+ 
+ - name: Install Docker
+   yum: name=docker state=latest
+ 
+ - name: Make sure Docker is running
+   service: name=docker state=running
