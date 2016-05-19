@@ -22,6 +22,7 @@
    when: item.state == "present"
 
 #Needs to be re-written
+
 - name: Add users to sudo: Ubuntu
   user:
      name={{item}}
