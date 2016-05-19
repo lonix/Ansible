@@ -42,7 +42,7 @@
  - name: Disable sudo Password requirements -- CentOS 
    lineinfile: 
      dest: /etc/sudoers 
-     regexp: '^%wheel' line='%wheel ALL=(ALL) NOPASSWD: ALL'"
+     regexp: "'^%wheel' line='%wheel ALL=(ALL) NOPASSWD: ALL'"
      state: present 
    when: ansible_distribution == 'CentOS'
 
