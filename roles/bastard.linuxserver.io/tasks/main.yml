@@ -3,6 +3,10 @@
   include: backup-keys.yml
   when: backup_key
 
+- name: Adding Users\Group
+  include: users-maintenance.yml
+  when: users_maintenance
+
 - name: Updateing Core OS\Packages
   include: os-update.yml
   when: os_update

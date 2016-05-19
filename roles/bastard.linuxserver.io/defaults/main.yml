@@ -16,6 +16,9 @@ docker_binary: true
 #Starts\updates the docker Containers
 docker_contianers: true
 
+#Enables\disable adding of users:
+users_maintenance: true
+
 ###############
 ## Docker Binary Options
 ###############
