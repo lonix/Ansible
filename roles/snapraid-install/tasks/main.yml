@@ -1,0 +1,17 @@
+---
+ - name: Adding SnapRAID PPA
+   apt_repository:
+     repo: ppa:tikhonov/snapraid
+     state: present
+     update_cache: yes
+
+ - name: Installing SnapRAID from PPA
+   pkg:
+     name: snapraid
+     state: latest
+ 
+ - name: clone snapraid-runner
+  git:
+    repo: https://github.com/Chronial/snapraid-runner.git
+    dest: /opt/snapraid-runner
+    

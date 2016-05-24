@@ -1,0 +1,9 @@
+---
+
+- name: systemd daemon-reload
+  command: systemctl daemon-reload
+
+- name: restart ssh
+  service: 
+    name: ssh 
+    state: restarted

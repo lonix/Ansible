@@ -1,0 +1,7 @@
+---
+ - host: all
+   sudo: true
+   roles:
+    - docker-install
+    - snapraid-install
+    - memoria

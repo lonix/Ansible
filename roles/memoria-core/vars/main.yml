@@ -1,0 +1,30 @@
+---
+
+#Packages to be installed as core
+packages:
+  - screen
+  - git
+  - htop
+  - sudo
+  - nano
+  - wget
+  - curl
+  - bash-completion
+  - ncdu
+  - openssh-server
+  - zsh
+  - netcat
+  - python-pip
+
+mounts:
+  - disk1
+  - disk2
+  - disk3
+  - disk4
+  - parity1
+  - array
+
+
+
+snapraid_config_file: /etc/snapraid.conf
+mergerfs_version: 2.13.1

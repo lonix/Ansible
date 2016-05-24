@@ -1,0 +1,22 @@
+---
+ - name: Installing Packages
+   package: name={{item}} state=latest
+   with_items: "{{packages}}"
+
+ - name: Installing MergerFS
+   apt: deb=https://github.com/trapexit/mergerfs/releases/download/{{mergerfs_version}}/mergerfs_{{mergerfs_version}}.ubuntu-xenial_amd64.deb
+
+ - name:  Upgrade OS
+   apt:
+     upgrade: full
+     update_cache: yes
+     cache_valid_time: 300
+
+ - name: create /mnt points
+   file:
+     dest: "/mnt/{{ item }}"
+     state: directory
+     owner: nobody
+     group: nogroup
+     mode: 0777
+   with_items: "{{ mounts }}"

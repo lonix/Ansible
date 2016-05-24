@@ -1,5 +1,0 @@
----
- - hosts: linuxserver.io
-   sudo: true
-   roles:
-    - adduser
