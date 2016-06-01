@@ -2,4 +2,6 @@
  - hosts: all
    sudo: true
    roles:
-    - bastard
+    - docker-install
+    - snapraid-install
+    - memoria

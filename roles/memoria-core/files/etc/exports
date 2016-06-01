@@ -1,0 +1,4 @@
+# /etc/exports
+
+
+/mnt/storage      *(ro,sync,no_root_squash)

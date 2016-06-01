@@ -12,11 +12,3 @@
      update_cache: yes
      cache_valid_time: 300
 
- - name: create /mnt points
-   file:
-     dest: "/mnt/{{ item }}"
-     state: directory
-     owner: nobody
-     group: nogroup
-     mode: 0777
-   with_items: "{{ mounts }}"

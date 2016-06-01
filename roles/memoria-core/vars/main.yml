@@ -15,6 +15,8 @@ packages:
   - zsh
   - netcat
   - python-pip
+  - samba
+  - nfs-kernel-server
 
 mounts:
   - disk1
@@ -24,7 +26,14 @@ mounts:
   - parity1
   - array
 
+drives:
+  - {src: /dev/disk/by-id/asdasdasda, dst: /mnt/parity1, fs: ext4}
+  - {src: /dev/disk/by-id/asdasdasqweqda, dst: /mnt/disk1, fs: xfs}
+  - {src: /dev/disk/by-id/asdasdasdasdqa, dst: /mnt/disk2, fs: xfs}
+  - {src: /dev/disk/by-id/asdasdaasdavb2qsda, dst: /mnt/disk3, fs: xfs}
+  - {src: /dev/disk/by-id/asdasdas11241r5da, dst: /mnt/disk4, fs: xfs}
 
 
 snapraid_config_file: /etc/snapraid.conf
 mergerfs_version: 2.13.1
+
