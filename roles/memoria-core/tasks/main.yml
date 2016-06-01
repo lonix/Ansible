@@ -1,5 +1,5 @@
 ---
  - include: os-update.yml
  - include: secure-ssh.yml
- - include: data-mountandsahre.yml
+ - include: data-mountandshare.yml
  - include: snapraid-runner.yml
