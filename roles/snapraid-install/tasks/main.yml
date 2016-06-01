@@ -6,7 +6,7 @@
     update_cache: yes
 
 - name: Installing SnapRAID from PPA
-  pkg:
+  package:
     name: snapraid
     state: latest
     
