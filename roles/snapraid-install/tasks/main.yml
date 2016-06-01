@@ -1,13 +1,12 @@
 ---
- - name: Adding SnapRAID PPA
-   apt_repository:
-     repo: ppa:tikhonov/snapraid
-     state: present
-     update_cache: yes
+- name: Adding SnapRAID PPA
+  apt_repository:
+    repo: ppa:tikhonov/snapraid
+    state: present
+    update_cache: yes
 
- - name: Installing SnapRAID from PPA
-   pkg:
-     name: snapraid
-     state: latest
-
+- name: Installing SnapRAID from PPA
+  pkg:
+    name: snapraid
+    state: latest
     

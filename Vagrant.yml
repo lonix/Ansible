@@ -4,4 +4,4 @@
    roles:
     - docker-install
     - snapraid-install
-    - memoria
+    - memoria-core
