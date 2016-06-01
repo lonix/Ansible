@@ -18,5 +18,5 @@
                state=present
    notify: Restart ssh 
 
-- name: remove password requirements from sudo in Ubuntu
-  lineinfile: "dest=/etc/sudoers state=present regexp='^%sudo' line='%sudo ALL=(ALL) NOPASSWD: ALL'"
+ - name: remove password requirements from sudo in Ubuntu
+   lineinfile: "dest=/etc/sudoers state=present regexp='^%sudo' line='%sudo ALL=(ALL) NOPASSWD: ALL'"
