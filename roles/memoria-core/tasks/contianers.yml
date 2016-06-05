@@ -1,0 +1,146 @@
+---
+- name: plex container
+  docker:
+    name: plex
+    image: linuxserver/plex
+    state: reloaded
+    pull: always
+    net: host
+    volumes:
+    - /mnt/nas1/c/tvshows:/media/series
+    - /opt/plex:/config
+    - /mnt/array/films:/media/movies
+    - /media/movies-children
+    - /media/music
+    - /media/pictures
+    - /media/series-archive
+    env:
+      PUID=99
+      PGID=100
+      VERSION=latest
+      VIRTUAL_HOST=plex.lonix.me
+
+ - name: plexpy container
+   docker:
+    pull: always
+    name: plexpy
+    image: linuxserver/plexpy
+    state: reloaded
+    net: bridge
+    ports:
+      - 8181
+    volumes:
+      - /opt/plexpy:/config
+      - /opt/plex/Library/Application Support/Plex Media Server/Logs/:/logs
+    env:
+      PUID=99
+      PGID=100
+      VIRTUAL_HOST=plexpy.lonix.me
+
+ - name: couchpotato container
+   docker:
+    pull: always
+    name: couchpotato
+    image: linuxserver/couchpotato
+    state: reloaded
+    net: bridge
+    ports:
+      - 5050
+    volumes:
+      - /opt/couchpotato:/config
+      - /opt/downloads:/downloads
+    env:
+      PUID=99
+      PGID=100
+      VIRTUAL_HOST=film.lonix.me
+
+ - name: nzbhydra
+   docker:
+    pull: always
+    name: nzbhydra
+    image: linuxserver/hydra
+    state: reloaded
+    net: bridge
+    ports:
+      - 5075
+    volumes:
+      - /opt/nzbhydra/config:/config
+      - /opt/nzbhydra/downloads:/downloads
+    env:
+      PUID=99
+      PGID=100
+      VIRTUAL_HOST=hydra.lonix.me
+
+
+
+ - name: nzbget
+   docker:
+    pull: always
+    name: nzbget
+    image: linuxserver/nzbget
+    state: reloaded
+    net: bridge
+    ports:
+      - 6789
+    volumes:
+      - /opt/nzbget:/config
+      - /opt/downloads:/downloads
+
+    env:
+      PUID=99
+      PGID=100
+      VIRTUAL_HOST=download.lonix.me
+
+ - name: owncloud
+   docker: 
+    pull: always
+    name: owncloud
+    image: lsiodev/owncloud
+    state: reloaded
+    net: bridge
+    ports:
+      - 443
+    volumes:
+      - /opt/owncloud/config:/config
+      - /opt/owncloud/data:/data
+    env:
+      PUID=99
+      PGID=100
+      DB_PASS=owncloud
+      VIRTUAL_HOST=sky.lonix.me
+      ADVANCED_SCRIPT=true
+
+ - name: proxy
+   docker:
+    pull: always
+    name: proxy
+    image: jwilder/nginx-proxy
+    state: reloaded
+    net: bridge
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - /opt/proxy:/etc/nginx/certs
+      - /opt/proxy/vhost.d:/etc/nginx/vhost.d:rw
+    env:
+    PUID=99
+    PGID=100 
+
+ - name: sonarr
+   docker:
+    pull: always
+    name: sonarr
+    image: linuxserver/sonarr
+    state: reloaded
+    net: bridge
+    ports:
+      - 8989
+    volumes:
+      - /opt/sonarr:/config
+      - /opt/downloads:/downloads
+    env:
+      PUID=99
+      PGID=100
+      VIRTUAL_HOST=tv.lonix.me

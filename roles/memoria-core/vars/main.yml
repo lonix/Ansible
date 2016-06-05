@@ -28,10 +28,10 @@ mounts:
   - array
 
 drives:
-  - {src: /dev/disk/by-id/asdasdasda, dst: /mnt/parity1, fs: ext4}
-  - {src: /dev/disk/by-id/asdasdasqweqda, dst: /mnt/disk1, fs: xfs}
-  - {src: /dev/disk/by-id/asdasdasdasdqa, dst: /mnt/disk2, fs: xfs}
-  - {src: /dev/disk/by-id/asdasdaasdavb2qsda, dst: /mnt/disk3, fs: xfs}
+  - {src: /dev/disk/by-id/ata-ST3000DM001-1CH166_W1F2YYBQ-part1, dst: /mnt/parity1, fs: ext4}
+  - {src: /dev/disk/by-id/ata-ST2000DL003-9VT166_5YD5AELE-part1, dst: /mnt/disk1, fs: xfs}
+  - {src: /dev/disk/by-id/ata-WDC_WD20EARS-00MVWB0_WD-WCAZA3633963-part1, dst: /mnt/disk2, fs: xfs}
+  - {src: /dev/disk/by-id/ata-WDC_WD20EARS-00MVWB0_WD-WCAZA3663919-part1, dst: /mnt/disk3, fs: xfs}
   - {src: /dev/disk/by-id/asdasdas11241r5da, dst: /mnt/disk4, fs: xfs}
 
 
