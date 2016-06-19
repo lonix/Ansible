@@ -1,7 +1,7 @@
 ---
- - host: all
-   sudo: true
-   roles:
+- hosts: all
+  sudo: true
+  roles:
     - docker-install
     - snapraid-install
-    - memoria
+    - memoria-core

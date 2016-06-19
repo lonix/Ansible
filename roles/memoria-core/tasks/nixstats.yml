@@ -1,0 +1,14 @@
+---
+- include_vars: vault.yml
+
+- name: get nixstat-script
+  get_url: url=https://api.nixstats.com/install_python.sh dest=/opt/nixstat-install.sh validate_certs=no
+
+- name: make install script exec
+  file:
+    path: /opt/nixstat-install.sh
+    mode: 0774
+
+- name: Install nixstats
+  shell: /opt/nixstat-install.sh {{ nix_stats_key }} creates=/etc/nixstats/token
+

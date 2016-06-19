@@ -32,3 +32,10 @@
   service:
     name: docker
     state: started
+
+- name: installing pip
+  pip: name=pip
+
+- name: Install docker-py
+  pip: name=docker-py
+

@@ -1,4 +1,5 @@
 ---
+
 - name: plex container
   docker:
     name: plex
@@ -7,21 +8,24 @@
     pull: always
     net: host
     volumes:
-    - /mnt/nas1/c/tvshows:/media/series
+    - /mnt/nas1/tvshows:/media/series
     - /opt/plex:/config
-    - /mnt/array/films:/media/movies
-    - /media/movies-children
-    - /media/music
-    - /media/pictures
-    - /media/series-archive
+    - /mnt/storage/movies:/media/movies
+    - /mnt/storage/movies-childern:/media/movies-children
+    - /mnt/storage/music:/media/music
+    - /mnt/nas1/bilder:/media/pictures
+    - /mnt/storage/series-archive:/media/series-archive
+    - /mnt/storage/series-childern:/media/series-childern
     env:
-      PUID=99
-      PGID=100
-      VERSION=latest
-      VIRTUAL_HOST=plex.lonix.me
+      PUID: 99
+      PGID: 100
+      VERSION: latest
+      VIRTUAL_HOST: plex.lonix.me
+      LETSENCRYPT_HOST: "{{ letsencrypt_hosts }}"
+      LETSENCRYPT_EMAIL: lonixx@gmail.com
 
- - name: plexpy container
-   docker:
+- name: plexpy container
+  docker:
     pull: always
     name: plexpy
     image: linuxserver/plexpy
@@ -33,12 +37,34 @@
       - /opt/plexpy:/config
       - /opt/plex/Library/Application Support/Plex Media Server/Logs/:/logs
     env:
-      PUID=99
-      PGID=100
-      VIRTUAL_HOST=plexpy.lonix.me
+      PUID: 99
+      PGID: 100
+      VIRTUAL_HOST: plexpy.lonix.me
+      LETSENCRYPT_HOST: "{{ letsencrypt_hosts }}"
+      LETSENCRYPT_EMAIL: lonixx@gmail.com
 
- - name: couchpotato container
-   docker:
+- name: plexrequest container
+  docker:
+    pull: always
+    name: plexrequests
+    image: aptalca/docker-plexrequests
+    state: reloaded
+    net: bridge
+    ports:
+     - 3000
+    volumes:
+     - /etc/localtime:/etc/localtime:ro
+     - /opt/plexrequests:/config:rw
+    env:
+      BRANCH: master
+      VIRTUAL_HOST: requests.lonix.me
+      LETSENCRYPT_HOST: "{{ letsencrypt_hosts }}"
+      LETSENCRYPT_EMAIL: lonixx@gmail.com
+
+
+
+- name: couchpotato container
+  docker:
     pull: always
     name: couchpotato
     image: linuxserver/couchpotato
@@ -49,13 +75,16 @@
     volumes:
       - /opt/couchpotato:/config
       - /opt/downloads:/downloads
+      - /mnt/storage/movies:/movies
     env:
-      PUID=99
-      PGID=100
-      VIRTUAL_HOST=film.lonix.me
+      PUID: 99
+      PGID: 100
+      VIRTUAL_HOST: film.lonix.me
+      LETSENCRYPT_HOST: "{{ letsencrypt_hosts }}"
+      LETSENCRYPT_EMAIL: lonixx@gmail.com
 
- - name: nzbhydra
-   docker:
+- name: nzbhydra
+  docker:
     pull: always
     name: nzbhydra
     image: linuxserver/hydra
@@ -67,14 +96,16 @@
       - /opt/nzbhydra/config:/config
       - /opt/nzbhydra/downloads:/downloads
     env:
-      PUID=99
-      PGID=100
-      VIRTUAL_HOST=hydra.lonix.me
+      PUID: 99
+      PGID: 100
+      VIRTUAL_HOST: hydra.lonix.me
+      LETSENCRYPT_HOST: "{{ letsencrypt_hosts }}"
+      LETSENCRYPT_EMAIL: lonixx@gmail.com
 
 
 
- - name: nzbget
-   docker:
+- name: nzbget
+  docker:
     pull: always
     name: nzbget
     image: linuxserver/nzbget
@@ -87,31 +118,31 @@
       - /opt/downloads:/downloads
 
     env:
-      PUID=99
-      PGID=100
-      VIRTUAL_HOST=download.lonix.me
+      PUID: 99
+      PGID: 100
+      VIRTUAL_HOST: download.lonix.me
+      LETSENCRYPT_HOST: "{{ letsencrypt_hosts }}"
+      LETSENCRYPT_EMAIL: lonixx@gmail.com
 
- - name: owncloud
-   docker: 
+- name: owncloud
+  docker: 
     pull: always
     name: owncloud
-    image: lsiodev/owncloud
+    image: owncloud:latest
     state: reloaded
     net: bridge
     ports:
-      - 443
+      - 80
     volumes:
-      - /opt/owncloud/config:/config
-      - /opt/owncloud/data:/data
+      - /opt/owncloud:/var/www/html
     env:
-      PUID=99
-      PGID=100
-      DB_PASS=owncloud
-      VIRTUAL_HOST=sky.lonix.me
-      ADVANCED_SCRIPT=true
+      VIRTUAL_HOST: sky.lonix.me
+      LETSENCRYPT_HOST: "{{ letsencrypt_hosts }}"
+      LETSENCRYPT_EMAIL: lonixx@gmail.com
 
- - name: proxy
-   docker:
+
+- name: proxy
+  docker:
     pull: always
     name: proxy
     image: jwilder/nginx-proxy
@@ -122,14 +153,25 @@
       - 443:443
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
-      - /opt/proxy:/etc/nginx/certs
+      - /opt/proxy/cert:/etc/nginx/certs:ro
       - /opt/proxy/vhost.d:/etc/nginx/vhost.d:rw
-    env:
-    PUID=99
-    PGID=100 
+      - /opt/proxy/html:/usr/share/nginx/html
 
- - name: sonarr
-   docker:
+- name: lets-encrypt
+  docker: 
+    pull: always
+    name: letsencrypt
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    state: reloaded
+    net: bridge
+    volumes:
+     - /var/run/docker.sock:/var/run/docker.sock:ro
+     - /opt/proxy/cert:/etc/nginx/certs:rw
+    volumes_from:
+     - proxy
+
+- name: sonarr
+  docker:
     pull: always
     name: sonarr
     image: linuxserver/sonarr
@@ -140,7 +182,32 @@
     volumes:
       - /opt/sonarr:/config
       - /opt/downloads:/downloads
+      - /mnt/nas1/tvshows:/tv
     env:
-      PUID=99
-      PGID=100
-      VIRTUAL_HOST=tv.lonix.me
+      PUID: 99
+      PGID: 100
+      VIRTUAL_HOST: tv.lonix.me
+      LETSENCRYPT_HOST: "{{ letsencrypt_hosts }}"
+      LETSENCRYPT_EMAIL: lonixx@gmail.com
+
+- name: unifi
+  docker:
+    pull: always
+    name: unifi
+    image: rednut/unifi-controller
+    state: reloaded
+    net: bridge
+    ports: 
+      - 8443:8443
+      - 8080:8080
+      - 8880:8880
+      - 27117:27117
+    volumes: 
+     - /opt/unifi:/usr/lib/unifi/data
+    env:
+     VIRTUAL_PORT: 8443
+     VIRTUAL_HOST: unifi.lonix.me
+     VIRTUAL_PROTO: https
+     LETSENCRYPT_HOST: "{{ letsencrypt_hosts }}"
+     LETSENCRYPT_EMAIL: lonixx@gmail.com
+

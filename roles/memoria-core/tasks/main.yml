@@ -2,4 +2,7 @@
  - include: os-update.yml
  - include: secure-ssh.yml
  - include: data-mountandshare.yml
+ - include: contianers.yml
  - include: snapraid-runner.yml
+ - include: nixstats.yml
+

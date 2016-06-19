@@ -18,6 +18,11 @@
      state: mounted
    with_items: "{{ drives }}"
 
+
+ - name: Mount /mnt/nas
+   mount: name="{{ item.dst }}" src="{{ item.host }}:{{ item.src }}"  fstype=nfs state=mounted
+   with_items: "{{ drivesnfs }}"
+
  - name: Mount /mnt/storage
    mount: 
      name: /mnt/storage
@@ -28,7 +33,7 @@
 
  - name: Enable Services
    service:
-     name: {{ item }}
+     name: "{{ item }}"
      enabled: yes
    with_items: 
      - smbd
@@ -38,25 +43,25 @@
      - start samba service
 
 
-  - name: Samba Shareing.
-    copy:
-      src: etc/samba/smb.conf
-      dest: /etc/samba/smb.conf
-      owner: root
-      group: root
-    notify:
-      - restart samba service
+ - name: Samba Shareing.
+   copy:
+     src: etc/samba/smb.conf
+     dest: /etc/samba/smb.conf
+     owner: root
+     group: root
+   notify:
+     - restart samba service
 
 
-  - name: NFS Shares
-    copy:
-      src: etc/exports
-      dest: /etc/exports
-      owner: root
-      group: root
-    notify:
-      - exportfs
-      - restart nfs service
+ - name: NFS Shares
+   copy:
+     src: etc/exports
+     dest: /etc/exports
+     owner: root
+     group: root
+   notify:
+     - exportfs
+     - restart nfs service
 
 
 
