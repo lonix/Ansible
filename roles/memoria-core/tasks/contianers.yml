@@ -140,7 +140,22 @@
       LETSENCRYPT_HOST: "{{ letsencrypt_hosts }}"
       LETSENCRYPT_EMAIL: lonixx@gmail.com
 
-
+- name: ghost
+  docker:
+    pull: always
+    name: ghost
+    image: ghost
+    state: reloaded
+    net: bridge
+    ports:
+     - 2368
+    volumes:
+     - /opt/ghost:/var/lib/ghost
+    env:
+      VIRTUAL_HOST: lonix.me
+      LETSENCRYPT_HOST: "{{ letsencrypt_hosts }}"
+      LETSENCRYPT_EMAIL: lonixx@gmail.com
+    
 - name: proxy
   docker:
     pull: always
