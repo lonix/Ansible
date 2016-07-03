@@ -1,3 +1,7 @@
 hosts
 ansible.cfg
 .vagrant
+get-pip.py
+.retry
+nixstats.tar.gz
+.swp

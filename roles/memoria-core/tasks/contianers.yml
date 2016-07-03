@@ -16,6 +16,7 @@
     - /mnt/nas1/bilder:/media/pictures
     - /mnt/storage/series-archive:/media/series-archive
     - /mnt/storage/series-childern:/media/series-childern
+    - /mnt/storage/preroll:/media/preroll
     env:
       PUID: 99
       PGID: 100
