@@ -21,7 +21,7 @@
 - name: Add snapraid cron job
   cron:
     user: root
-    job: python2 /opt/snapraid-runner/snapraid-runner.py
+    job: python2 /opt/snapraid-runner/snapraid-runner.py -c /opt/snapraid-runner/snapraid-runner.conf
     name: "Snapraid-runner"
     hour: 08
     minute: 00
