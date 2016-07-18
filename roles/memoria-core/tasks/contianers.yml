@@ -21,9 +21,6 @@
       PUID: 99
       PGID: 100
       VERSION: latest
-      VIRTUAL_HOST: plex.lonix.me
-      LETSENCRYPT_HOST: "{{ letsencrypt_hosts }}"
-      LETSENCRYPT_EMAIL: lonixx@gmail.com
 
 - name: plexpy container
   docker:
