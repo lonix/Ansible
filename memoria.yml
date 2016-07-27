@@ -1,7 +1,8 @@
 ---
 - hosts: all
-  sudo: true
+  become: true
   roles:
     - docker-install
+    - FGtatsuro.virtualbox
     - snapraid-install
     - memoria-core
