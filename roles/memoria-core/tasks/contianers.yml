@@ -122,22 +122,6 @@
       LETSENCRYPT_HOST: "{{ letsencrypt_hosts }}"
       LETSENCRYPT_EMAIL: lonixx@gmail.com
 
-- name: owncloud
-  docker: 
-    pull: always
-    name: owncloud
-    image: owncloud:latest
-    state: reloaded
-    net: bridge
-    ports:
-      - 80
-    volumes:
-      - /opt/owncloud:/var/www/html
-    env:
-      VIRTUAL_HOST: sky.lonix.me
-      LETSENCRYPT_HOST: "{{ letsencrypt_hosts }}"
-      LETSENCRYPT_EMAIL: lonixx@gmail.com
-
 - name: ghost
   docker:
     pull: always
