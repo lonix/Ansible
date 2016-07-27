@@ -4,7 +4,7 @@
   docker_container:
     name: plex
     image: linuxserver/plex
-    state: reloaded
+    state: started
     pull: true
     network_mode: host
     volumes:
@@ -27,7 +27,7 @@
     pull: true
     name: plexpy
     image: linuxserver/plexpy
-    state: reloaded
+    state: started
     network_mode: bridge
     ports:
       - 8181
@@ -46,7 +46,7 @@
     pull: true
     name: plexrequests
     image: aptalca/docker-plexrequests
-    state: reloaded
+    state: started
     network_mode: bridge
     ports:
      - 3000
@@ -66,7 +66,7 @@
     pull: true
     name: couchpotato
     image: linuxserver/couchpotato
-    state: reloaded
+    state: started
     network_mode: bridge
     ports:
       - 5050
@@ -86,7 +86,7 @@
     pull: true
     name: nzbhydra
     image: linuxserver/hydra
-    state: reloaded
+    state: started
     network_mode: bridge
     ports:
       - 5075
@@ -107,7 +107,7 @@
     pull: true
     name: nzbget
     image: linuxserver/nzbget
-    state: reloaded
+    state: started
     network_mode: bridge
     ports:
       - 6789
@@ -127,7 +127,7 @@
     pull: true
     name: ghost
     image: ghost
-    state: reloaded
+    state: started
     network_mode: bridge
     ports:
      - 2368
@@ -143,7 +143,7 @@
     pull: true
     name: proxy
     image: jwilder/nginx-proxy
-    state: reloaded
+    state: started
     network_mode: bridge
     ports:
       - 80:80
@@ -159,7 +159,7 @@
     pull: true
     name: letsencrypt
     image: jrcs/letsencrypt-nginx-proxy-companion
-    state: reloaded
+    state: started
     network_mode: bridge
     volumes:
      - /var/run/docker.sock:/var/run/docker.sock:ro
@@ -172,7 +172,7 @@
     pull: true
     name: sonarr
     image: linuxserver/sonarr
-    state: reloaded
+    state: started
     network_mode: bridge
     ports:
       - 8989
@@ -192,7 +192,7 @@
     pull: true
     name: unifi
     image: rednut/unifi-controller
-    state: reloaded
+    state: started
     network_mode: bridge
     ports: 
       - 8443:8443

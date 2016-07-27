@@ -1,5 +1,0 @@
----
- - name: add backup key to root user
-   authorized_key:
-     user: root
-     key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDLrL2nPV4ApJeBRQjOWRBKE34Jq9BfdPXn5zvWq8AcC3LQNdiBB7gcss1ptaiVUV1eKl6Dt1oaeSGJWEXQagZ+yf5A71P0g6DmfQ/JCloOJaHv7TOyBwBq5cr5D474z7ackS3bByqHIrfTflEBrs52XsDY6ntadekeZR2vYGX6Ql1aqu8ge0icNDdrMZdKpF89VRA7Kn7SxWqZGfQfBGvXGVsSFSJuYblBrXs8WKbyoQMNoquH4cSWqmmALZTCy5l9xE0ahSPekbdwzICRr7SQ6ypJPXg5WzNRiod4gRiQ6magam5pEEFjJpuGdltddwJCZjyDkVWRONxmjKIh4Axn root@backup.linuxserver.io

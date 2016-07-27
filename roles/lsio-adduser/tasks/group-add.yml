@@ -1,4 +1,0 @@
----
- - name: Add lsio group.
-   sudo: yes
-   group: gid=911  name=lsio  state=present  system=no  

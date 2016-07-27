@@ -1,7 +1,0 @@
----
- - name: Installing Packages
-   package: name={{item}} state=present
-   with_items: "{{packages}}"
-
- - name:  Upgrade packages
-   yum: name=* state=latest
