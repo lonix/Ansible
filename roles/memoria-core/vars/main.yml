@@ -22,6 +22,7 @@ mounts:
   - disk1
   - disk2
   - disk3
+  - disk4
   - parity1
   - storage
   - nas1/tvshows
@@ -32,6 +33,7 @@ drives:
   - {src: /dev/disk/by-id/ata-ST2000DL003-9VT166_5YD5AELE-part1, dst: /mnt/disk1, fs: xfs}
   - {src: /dev/disk/by-id/ata-WDC_WD20EARS-00MVWB0_WD-WCAZA3633963-part1, dst: /mnt/disk2, fs: xfs}
   - {src: /dev/disk/by-id/ata-WDC_WD20EARS-00MVWB0_WD-WCAZA3663919-part1, dst: /mnt/disk3, fs: xfs}
+  - {src: /dev/dsik/by-id/ata-WDC_WD20EADS-00W4B0_WD-WCAVY7076551-part1, dst: /mnt/disk4, fs: ext4}
 
 drivesnfs:
  - {src: /c/bilder, dst: /mnt/nas1/bilder, host: nas1}
