@@ -1,7 +1,7 @@
 ---
 
 - name: plex container
-  docker:
+  docker_container:
     name: plex
     image: linuxserver/plex
     state: reloaded
@@ -23,7 +23,7 @@
       VERSION: latest
 
 - name: plexpy container
-  docker:
+  docker_container:
     pull: always
     name: plexpy
     image: linuxserver/plexpy
@@ -42,7 +42,7 @@
       LETSENCRYPT_EMAIL: lonixx@gmail.com
 
 - name: plexrequest container
-  docker:
+  docker_container:
     pull: always
     name: plexrequests
     image: aptalca/docker-plexrequests
@@ -62,7 +62,7 @@
 
 
 - name: couchpotato container
-  docker:
+  docker_container:
     pull: always
     name: couchpotato
     image: linuxserver/couchpotato
@@ -82,7 +82,7 @@
       LETSENCRYPT_EMAIL: lonixx@gmail.com
 
 - name: nzbhydra
-  docker:
+  docker_container:
     pull: always
     name: nzbhydra
     image: linuxserver/hydra
@@ -103,7 +103,7 @@
 
 
 - name: nzbget
-  docker:
+  docker_container:
     pull: always
     name: nzbget
     image: linuxserver/nzbget
@@ -123,7 +123,7 @@
       LETSENCRYPT_EMAIL: lonixx@gmail.com
 
 - name: ghost
-  docker:
+  docker_container:
     pull: always
     name: ghost
     image: ghost
@@ -139,7 +139,7 @@
       LETSENCRYPT_EMAIL: lonixx@gmail.com
     
 - name: proxy
-  docker:
+  docker_container:
     pull: always
     name: proxy
     image: jwilder/nginx-proxy
@@ -155,7 +155,7 @@
       - /opt/proxy/html:/usr/share/nginx/html
 
 - name: lets-encrypt
-  docker: 
+  docker_container: 
     pull: always
     name: letsencrypt
     image: jrcs/letsencrypt-nginx-proxy-companion
@@ -168,7 +168,7 @@
      - proxy
 
 - name: sonarr
-  docker:
+  docker_container:
     pull: always
     name: sonarr
     image: linuxserver/sonarr
@@ -188,7 +188,7 @@
       LETSENCRYPT_EMAIL: lonixx@gmail.com
 
 - name: unifi
-  docker:
+  docker_container:
     pull: always
     name: unifi
     image: rednut/unifi-controller
