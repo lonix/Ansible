@@ -5,7 +5,7 @@
     name: plex
     image: linuxserver/plex
     state: reloaded
-    pull: always
+    pull: true
     network_mode: host
     volumes:
     - /mnt/nas1/tvshows:/media/series
@@ -24,7 +24,7 @@
 
 - name: plexpy container
   docker_container:
-    pull: always
+    pull: true
     name: plexpy
     image: linuxserver/plexpy
     state: reloaded
@@ -43,7 +43,7 @@
 
 - name: plexrequest container
   docker_container:
-    pull: always
+    pull: true
     name: plexrequests
     image: aptalca/docker-plexrequests
     state: reloaded
@@ -63,7 +63,7 @@
 
 - name: couchpotato container
   docker_container:
-    pull: always
+    pull: true
     name: couchpotato
     image: linuxserver/couchpotato
     state: reloaded
@@ -83,7 +83,7 @@
 
 - name: nzbhydra
   docker_container:
-    pull: always
+    pull: true
     name: nzbhydra
     image: linuxserver/hydra
     state: reloaded
@@ -104,7 +104,7 @@
 
 - name: nzbget
   docker_container:
-    pull: always
+    pull: true
     name: nzbget
     image: linuxserver/nzbget
     state: reloaded
@@ -124,7 +124,7 @@
 
 - name: ghost
   docker_container:
-    pull: always
+    pull: true
     name: ghost
     image: ghost
     state: reloaded
@@ -140,7 +140,7 @@
     
 - name: proxy
   docker_container:
-    pull: always
+    pull: true
     name: proxy
     image: jwilder/nginx-proxy
     state: reloaded
@@ -156,7 +156,7 @@
 
 - name: lets-encrypt
   docker_container: 
-    pull: always
+    pull: true
     name: letsencrypt
     image: jrcs/letsencrypt-nginx-proxy-companion
     state: reloaded
@@ -169,7 +169,7 @@
 
 - name: sonarr
   docker_container:
-    pull: always
+    pull: true
     name: sonarr
     image: linuxserver/sonarr
     state: reloaded
@@ -189,7 +189,7 @@
 
 - name: unifi
   docker_container:
-    pull: always
+    pull: true
     name: unifi
     image: rednut/unifi-controller
     state: reloaded
