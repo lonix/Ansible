@@ -7,6 +7,7 @@
     state: started
     pull: true
     network_mode: host
+    restart_policy: always
     volumes:
     - /mnt/nas1/tvshows:/media/series
     - /opt/plex:/config
@@ -29,6 +30,7 @@
     image: linuxserver/plexpy
     state: started
     network_mode: bridge
+    restart_policy: always
     ports:
       - 8181
     volumes:
@@ -48,6 +50,7 @@
     image: aptalca/docker-plexrequests
     state: started
     network_mode: bridge
+    restart_policy: always
     ports:
      - 3000
     volumes:
@@ -68,6 +71,7 @@
     image: linuxserver/couchpotato
     state: started
     network_mode: bridge
+    restart_policy: always
     ports:
       - 5050
     volumes:
@@ -88,6 +92,7 @@
     image: linuxserver/hydra
     state: started
     network_mode: bridge
+    restart_policy: always
     ports:
       - 5075
     volumes:
@@ -109,6 +114,7 @@
     image: linuxserver/nzbget
     state: started
     network_mode: bridge
+    restart_policy: always
     ports:
       - 6789
     volumes:
@@ -129,6 +135,7 @@
     image: ghost
     state: started
     network_mode: bridge
+    restart_policy: always
     ports:
      - 2368
     volumes:
@@ -145,6 +152,7 @@
     image: jwilder/nginx-proxy
     state: started
     network_mode: bridge
+    restart_policy: always
     ports:
       - 80:80
       - 443:443
@@ -161,6 +169,7 @@
     image: jrcs/letsencrypt-nginx-proxy-companion
     state: started
     network_mode: bridge
+    restart_policy: always
     volumes:
      - /var/run/docker.sock:/var/run/docker.sock:ro
      - /opt/proxy/cert:/etc/nginx/certs:rw
@@ -174,6 +183,7 @@
     image: linuxserver/sonarr
     state: started
     network_mode: bridge
+    restart_policy: always
     ports:
       - 8989
     volumes:
@@ -194,6 +204,7 @@
     image: rednut/unifi-controller
     state: started
     network_mode: bridge
+    restart_policy: always
     ports: 
       - 8443:8443
       - 8080:8080
