@@ -18,6 +18,7 @@
     - /mnt/storage/series-archive:/media/series-archive
     - /mnt/storage/series-childern:/media/series-childern
     - /mnt/storage/preroll:/media/preroll
+    - /mnt/storage/tv2:/media/tv2
     env:
       PUID: 99
       PGID: 100
@@ -190,6 +191,7 @@
       - /opt/sonarr:/config
       - /opt/downloads:/downloads
       - /mnt/nas1/tvshows:/tv
+      - /mnt/storage/tv2:/tv2
     env:
       PUID: 99
       PGID: 100
