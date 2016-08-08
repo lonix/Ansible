@@ -43,5 +43,5 @@ drivesnfs:
 
 letsencrypt_hosts: lonix.me,tv.lonix.me,sky.lonix.me,download.lonix.me,hydra.lonix.me,film.lonix.me,plexpy.lonix.me,requests.lonix.me,unifi.lonix.me
 snapraid_config_file: /etc/snapraid.conf
-mergerfs_version: 2.13.1
+mergerfs_version: 2.14.0
 
