@@ -4,5 +4,5 @@
  - include: data-mountandshare.yml
  - include: contianers.yml
  - include: snapraid-runner.yml
- - include: nixstats.yml
+ - include: groups.yml
 
