@@ -10,7 +10,7 @@
  
  - name: Adding bash tools
    copy: 
-     src: {{ item }}
+     src: "{{ item }}"
      dest: /usr/local/bin/
      owner: root
      mode: 775
