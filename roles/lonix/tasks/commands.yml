@@ -15,4 +15,4 @@
      owner: root
      mode: 775
    with_fileglob: 
-    - files/usr/local/bin
+    - usr/local/bin/*
