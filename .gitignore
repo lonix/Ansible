@@ -5,3 +5,4 @@ get-pip.py
 .retry
 nixstats.tar.gz
 .swp
+.vagrant
