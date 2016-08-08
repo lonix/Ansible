@@ -17,6 +17,7 @@ packages:
   - samba
   - nfs-kernel-server
   - aptitude
+  - mediainfo
 
 mounts:
   - disk1
