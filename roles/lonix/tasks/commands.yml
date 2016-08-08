@@ -6,6 +6,7 @@
      owner: lonix
      group: lonix
      mode: 0600
+ 
  - name: Adding bash tools
    copy: 
      src: {{ item }}
