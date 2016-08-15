@@ -1,0 +1,20 @@
+---
+
+- name: Install rsnapshot
+  pkg: rsnapshot
+
+- name: Copy rsnapshot.conf inplace
+  copy: 
+    src: etc/rsnapshot.conf
+    dest: /etc/rsnapshot.conf
+    mode: 644
+    owner: root 
+    group: root
+
+- name: Copy rsnapshot.conf inplace
+  copy: 
+    src: etc/cron.d/rsnapshot
+    dest: /etc/cron.d/rsnapshot
+    mode: 644
+    owner: root 
+    group: root
