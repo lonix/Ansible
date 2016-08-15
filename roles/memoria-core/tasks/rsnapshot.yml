@@ -1,7 +1,9 @@
 ---
 
  - name: Install rsnapshot
-   package: rsnapshot
+   package: 
+     name: rsnapshot
+     state: latest
 
  - name: Copy rsnapshot.conf inplace
    copy: 
