@@ -1,7 +1,7 @@
 ---
 
  - name: Install rsnapshot
-   pkg: rsnapshot
+   package: rsnapshot
 
  - name: Copy rsnapshot.conf inplace
    copy: 
