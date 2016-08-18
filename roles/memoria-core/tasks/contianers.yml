@@ -1,5 +1,14 @@
 ---
 
+- name: Copy Docker dayli reboot script in place
+  copy:
+   src: etc/cron.d/docker
+   dest: /etc/cron.d/docker
+   mode: 644
+   owner: root
+   group: root
+
+
 - name: plex container
   docker_container:
     name: plex
@@ -145,7 +154,7 @@
       VIRTUAL_HOST: lonix.me
       LETSENCRYPT_HOST: "{{ letsencrypt_hosts }}"
       LETSENCRYPT_EMAIL: lonixx@gmail.com
-    
+
 - name: proxy
   docker_container:
     pull: true
@@ -164,7 +173,7 @@
       - /opt/proxy/html:/usr/share/nginx/html
 
 - name: lets-encrypt
-  docker_container: 
+  docker_container:
     pull: true
     name: letsencrypt
     image: jrcs/letsencrypt-nginx-proxy-companion
@@ -207,12 +216,12 @@
     state: started
     network_mode: bridge
     restart_policy: always
-    ports: 
+    ports:
       - 8443:8443
       - 8080:8080
       - 8880:8880
       - 27117:27117
-    volumes: 
+    volumes:
      - /opt/unifi:/usr/lib/unifi/data
     env:
      VIRTUAL_PORT: 8443
@@ -220,4 +229,3 @@
      VIRTUAL_PROTO: https
      LETSENCRYPT_HOST: "{{ letsencrypt_hosts }}"
      LETSENCRYPT_EMAIL: lonixx@gmail.com
-
