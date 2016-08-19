@@ -5,4 +5,5 @@
  - include: docker.yml
  - include: snapraid-runner.yml
  - include: groups.yml
+ - include: ssmtp.yml
 
