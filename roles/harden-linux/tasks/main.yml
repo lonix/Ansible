@@ -1,8 +1,9 @@
 ---
  - include: os-update.yml
- - include: storage.yml
+ - include: harden.yml
+ - include: data-mountandshare.yml
  - include: rsnapshot.yml
- - include: docker.yml
+ - include: contianers.yml
  - include: snapraid-runner.yml
  - include: groups.yml
 

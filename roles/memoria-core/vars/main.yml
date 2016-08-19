@@ -18,7 +18,6 @@ packages:
   - nfs-kernel-server
   - aptitude
   - mediainfo
-  - fail2ban
 
 mounts:
   - disk1

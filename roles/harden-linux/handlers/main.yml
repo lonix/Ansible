@@ -1,0 +1,14 @@
+---
+
+- name: systemd daemon-reload
+  command: systemctl daemon-reload
+
+- name: restart ssh service
+  service: 
+    name: ssh 
+    state: restarted
+
+- name: restart fail2ban service
+  service:
+    name: fail2ban
+    state: restarted
