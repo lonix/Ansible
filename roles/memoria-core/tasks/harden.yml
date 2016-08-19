@@ -8,3 +8,13 @@
 
  - name: remove password requirements from sudo in Ubuntu
    lineinfile: "dest=/etc/sudoers state=present regexp='^%sudo' line='%sudo ALL=(ALL) NOPASSWD: ALL'"
+
+ - name: Copy jail configs
+   copy: 
+     src: etc/fail2ban/jail.d/
+     dest: /etc/fail2ban/jail.d/
+     mode: 644
+     owner: root 
+     group: root
+   notify:
+    - restart fail2ban service

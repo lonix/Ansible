@@ -1,6 +1,6 @@
 ---
  - include: os-update.yml
- - include: secure-ssh.yml
+ - include: harden.yml
  - include: data-mountandshare.yml
  - include: rsnapshot.yml
  - include: contianers.yml
