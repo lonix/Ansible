@@ -8,8 +8,8 @@
    - logwatch 
    - libdate-manip-perl
 
- - name: Email logwatch with cron
-   cron:
-     name: "Weekly logwatch"
-     job: logwatch --mailto {{ admin_email }} --output mail --format html --range 'between -7 days and today' 
-     special_time: weekly
+- name: Email logwatch with cron
+  cron:
+    name: "Weekly logwatch"
+    job: logwatch --mailto {{ admin_email }} --output mail --format html --range 'between -7 days and today' 
+    special_time: weekly
