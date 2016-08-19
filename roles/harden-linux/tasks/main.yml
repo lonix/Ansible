@@ -1,9 +1,7 @@
 ---
- - include: os-update.yml
- - include: harden.yml
- - include: data-mountandshare.yml
- - include: rsnapshot.yml
- - include: contianers.yml
- - include: snapraid-runner.yml
- - include: groups.yml
-
+ - include: fail2ban.yml
+ - include: logwatch.yml
+ - include: psad.yml
+ - include: ssh.yml
+ - include: sudo.yml
+ 
