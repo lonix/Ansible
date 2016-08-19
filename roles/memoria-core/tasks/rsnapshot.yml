@@ -12,11 +12,3 @@
      mode: 644
      owner: root 
      group: root
-
- - name: Copy rsnapshot.conf inplace
-   copy: 
-     src: etc/cron.d/rsnapshot
-     dest: /etc/cron.d/rsnapshot
-     mode: 644
-     owner: root 
-     group: root
