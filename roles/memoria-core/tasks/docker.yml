@@ -1,13 +1,12 @@
 ---
-
-- name: Copy Docker dayli reboot script in place
-  copy:
-   src: etc/cron.d/docker
-   dest: /etc/cron.d/docker
-   mode: 644
-   owner: root
-   group: root
-
+- name: Daliy Docker Container Restart
+  cron:
+    user: root
+    job: docker restart $(docker ps -q)
+    name: "Restart Docker Containers"
+    hour: 08
+    minute: 00
+   
 
 - name: plex container
   docker_container:
