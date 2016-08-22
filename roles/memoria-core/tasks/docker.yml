@@ -4,7 +4,7 @@
     user: root
     job: docker restart $(docker ps -q)
     name: "Restart Docker Containers"
-    hour: 08
+    hour: 07
     minute: 00
    
 
