@@ -13,3 +13,8 @@
     name: "Weekly logwatch"
     job: logwatch --mailto {{ admin_email }} --output mail --format html --range 'between -7 days and today' 
     special_time: weekly
+
+- name: Remove default daily logwatch Email
+  file:
+    path: /etc/cron.daily/00logwatch
+    state: absent
