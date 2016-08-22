@@ -2,7 +2,7 @@
 - name: Daliy Docker Container Restart
   cron:
     user: root
-    job: docker restart $(docker ps -q)
+    job: docker restart $(docker ps -q) > /dev/null
     name: "Restart Docker Containers"
     hour: 07
     minute: 00
