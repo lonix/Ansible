@@ -3,7 +3,7 @@
   become: true
   roles:
     - docker-install
-    - { role: hubisan.virtualbox, virtualbox_version: "5.1", virtualbox_install_dkms: yes }
+#    - { role: hubisan.virtualbox, virtualbox_version: "5.1", virtualbox_install_dkms: yes }
 #    - { role: infOpen.vagrant }
     - snapraid-install
     - memoria-core
