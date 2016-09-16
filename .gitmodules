@@ -1,3 +1,6 @@
 [submodule "roles/ansible-role-docker"]
 	path = roles/ansible-role-docker
 	url = https://github.com/lonix/ansible-role-docker.git
+[submodule "roles/ansible-role-snapraid"]
+	path = roles/ansible-role-snapraid
+	url = https://github.com/lonix/ansible-role-snapraid
