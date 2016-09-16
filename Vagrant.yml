@@ -2,6 +2,8 @@
  - hosts: all
    sudo: true
    roles:
-    - docker-install
-    - snapraid-install
+    - ansible-role-docker
+    - ansible-role-snapraid
     - memoria-core
+    - lonix
+    - harden-linux
