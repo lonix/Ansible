@@ -6,3 +6,4 @@ get-pip.py
 nixstats.tar.gz
 .swp
 .vagrant
+*.log
