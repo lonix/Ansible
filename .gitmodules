@@ -1,0 +1,3 @@
+[submodule "role/ansible-role-docker"]
+	path = role/ansible-role-docker
+	url = https://github.com/lonix/ansible-role-docker.git
