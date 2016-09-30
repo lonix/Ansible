@@ -1,0 +1,7 @@
+---
+- hosts: alpha.lonix.me
+  become: true
+  roles:
+    - ansible-role-docker
+    - harden-linux
+    - lonix-new

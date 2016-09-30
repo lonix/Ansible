@@ -1,0 +1,9 @@
+---
+ - name: Ensure lonix is member of the right groups
+   user: name=lonix groups=docker,sudo append=yes
+
+
+ - name: Add ssh keys from github to root user
+   authorized_key:
+     user=root
+     key=https://github.com/lonix.keys

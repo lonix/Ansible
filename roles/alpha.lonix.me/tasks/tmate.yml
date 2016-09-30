@@ -1,0 +1,12 @@
+---
+- name: Install tmate ppa
+  apt_repository:
+    repo: ppa:tmate.io/archive
+    state: present
+
+
+- name: Install tmate
+  apt:
+    name: tmate
+    state: present
+    update_cache: yes

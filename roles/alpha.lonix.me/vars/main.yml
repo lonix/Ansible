@@ -1,0 +1,19 @@
+---
+#Packages to be installed as core
+packages:
+  - screen
+  - git
+  - htop
+  - sudo
+  - nano
+  - wget
+  - curl
+  - bash-completion
+  - ncdu
+  - openssh-server
+  - zsh
+  - netcat
+  - python-pip
+  - aptitude
+  - mediainfo
+  - ssmtp

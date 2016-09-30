@@ -1,0 +1,9 @@
+---
+
+ - name: Mount /tmp
+   mount:
+    name: /tmp
+    src: tmpfs
+    fstype: tmpfs
+    opts: defaults,noatime,nosuid,nodev,noexec,mode=1777
+    state: mounted

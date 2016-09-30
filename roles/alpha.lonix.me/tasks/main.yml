@@ -1,0 +1,6 @@
+---
+ - include: os-update.yml
+ - include: storage.yml
+ - include: groups.yml
+ - include: ssmtp.yml
+ - include: tmate.yml
