@@ -1,18 +1,9 @@
 ---
- - include_vars: vault.yml 
- - name: Adding vault password to ~
-   template:
-     src: vault_pass.j2
-     dest: /home/lonix/.vault-password.txt
-     owner: lonix
-     group: lonix
-     mode: 0600
- 
  - name: Adding bash tools
-   copy: 
+   copy:
      src: "{{ item }}"
      dest: /usr/local/bin/
      owner: root
      mode: 775
-   with_fileglob: 
+   with_fileglob:
     - usr/local/bin/*
