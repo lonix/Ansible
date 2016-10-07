@@ -1,0 +1,12 @@
+---
+ - name: Add IronicBadger to the system
+   user:
+     name=IronicBadger
+     append=yes
+     state=present
+     shell=/bin/zsh
+
+ - name: Add ssh keys from github
+   authorized_key:
+     user=IronicBadger
+     key=https://github.com/IronicBadger.keys
