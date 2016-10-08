@@ -1,7 +1,9 @@
 ---
- - name: Ensure lonix is member of the right groups
+ - name: Group memberships for lonix
    user: name=lonix groups=docker,sudo append=yes
 
+ - name: Group memberships for IronicBadger
+   user: name=IronicBadger groups=docker append=yes
 
  - name: Add ssh keys from github to root user
    authorized_key:
