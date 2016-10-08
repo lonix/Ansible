@@ -1,0 +1,13 @@
+---
+ - name: Install prereqs for keybase
+   apt:
+     name: "{{ item }}"
+     state: present
+   with_items:
+     - libappindicator1
+     - fuse
+
+
+ - name: Install keybase
+   apt:
+     deb: https://prerelease.keybase.io/keybase_amd64.deb
