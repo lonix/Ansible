@@ -17,3 +17,19 @@ packages:
   - aptitude
   - mediainfo
   - ssmtp
+
+
+drives:
+  - {src: /dev/disk/by-id/ata-HGST_HMS5C4040BLE640_PL2331LAGJG75J-part1, dst: /mnt/disk1, fs: ext4}
+  - {src: /dev/disk/by-id/ata-HGST_HMS5C4040BLE640_PL2331LAGJ0AZJ-part1, dst: /mnt/disk2, fs: ext4}
+  - {src: /dev/disk/by-id/ata-HGST_HMS5C4040BLE640_PL2331LAGJMW9J-part1, dst: /mnt/disk3, fs: ext4}
+  - {src: /dev/disk/by-id/ata-HGST_HMS5C4040BLE640_PL2331LAGHX08J-part3, dst: /mnt/backup, fs: ext4}
+
+mount_points:
+  - disk1
+  - disk2
+  - disk3
+  - pool
+  - backup
+
+mergerfs_version: 2.16.1

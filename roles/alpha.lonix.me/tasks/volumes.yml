@@ -1,0 +1,34 @@
+---
+- name: create /mnt points
+  file:
+    dest: "/mnt/{{ item }}"
+    state: directory
+    owner: nobody
+    group: nogroup
+    mode: 0777
+  with_items: "{{ mount_points }}"
+
+
+- name: Mount /tmp
+  mount:
+  name: /tmp
+  src: tmpfs
+  fstype: tmpfs
+  opts: defaults,noatime,nosuid,nodev,noexec,mode=1777
+  state: mounted
+
+- name: Mount /mnt/disk(s)
+  mount:
+    name: "{{ item.dst }}"
+    src: "{{ item.src }}"
+    fstype: "{{ item.fs }}"
+    state: mounted
+  with_items: "{{ drives }}"
+
+- name: Mount /mnt/pool
+  mount:
+    name: /mnt/pool
+    src: /mnt/disk*
+    opts: direct_io,defaults,allow_other,minfreespace=50G,fsname=mergerfs
+    fstype: fuse.mergerfs
+    state: mounted
