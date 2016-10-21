@@ -1,4 +1,9 @@
 ---
+
+- name: Installing MergerFS
+  apt: deb=https://github.com/trapexit/mergerfs/releases/download/{{mergerfs_version}}/mergerfs_{{mergerfs_version}}.ubuntu-xenial_amd64.deb
+
+
 - name: create /mnt points
   file:
     dest: "/mnt/{{ item }}"
@@ -8,14 +13,13 @@
     mode: 0777
   with_items: "{{ mount_points }}"
 
-
 - name: Mount /tmp
   mount:
-  name: /tmp
-  src: tmpfs
-  fstype: tmpfs
-  opts: defaults,noatime,nosuid,nodev,noexec,mode=1777
-  state: mounted
+    name: /tmp
+    src: tmpfs
+    fstype: tmpfs
+    opts: defaults,noatime,nosuid,nodev,noexec,mode=1777
+    state: mounted
 
 - name: Mount /mnt/disk(s)
   mount:
