@@ -1,6 +1,6 @@
 ---
  - include: os-update.yml
- - include: storage.yml
+ - include: volumes.yml
  - include: groups.yml
  - include: keybase.yml
  - include: ssmtp.yml
