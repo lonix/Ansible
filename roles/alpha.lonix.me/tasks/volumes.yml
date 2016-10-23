@@ -42,7 +42,7 @@
 - name: Mount /mnt/cloud
   mount:
     name: /mnt/cloud
-    src: amazon_us
+    src: "amazon_us:"
     opts: read-only,config=/root/.rclone.conf,allow_other
     fstype: fuse.rclone
     state: mounted
