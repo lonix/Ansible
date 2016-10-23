@@ -39,8 +39,8 @@
     fstype: fuse.mergerfs
     state: mounted
 
-- name: Install acd.service
-  file:
-    path: /etc/systemd/system/acd.service
-    src: etc/systemd/system/acd.service
-    state: present
+#- name: Install acd.service
+#  file:
+#    path: /etc/systemd/system/acd.service
+#    src: etc/systemd/system/acd.service
+#    state: present

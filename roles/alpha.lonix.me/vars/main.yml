@@ -30,7 +30,7 @@ mount_points:
   - disk2
   - disk3
   - local
-  - cloud
+#  - cloud
   - media
   - backup
 
