@@ -29,7 +29,9 @@ mount_points:
   - disk1
   - disk2
   - disk3
-  - pool
+  - local
+  - cloud
+  - media
   - backup
 
 mergerfs_version: 2.16.1
