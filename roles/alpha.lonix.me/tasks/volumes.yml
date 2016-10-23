@@ -3,6 +3,8 @@
 - name: Installing MergerFS
   apt: deb=https://github.com/trapexit/mergerfs/releases/download/{{mergerfs_version}}/mergerfs_{{mergerfs_version}}.ubuntu-xenial_amd64.deb
 
+- name: Installing fuse
+  apt: name=fuse
 
 - name: create /mnt points
   file:
@@ -29,9 +31,9 @@
     state: mounted
   with_items: "{{ drives }}"
 
-- name: Mount /mnt/pool
+- name: Mount /mnt/local
   mount:
-    name: /mnt/pool
+    name: /mnt/local
     src: /mnt/disk*
     opts: direct_io,defaults,allow_other,minfreespace=50G,fsname=mergerfs
     fstype: fuse.mergerfs
