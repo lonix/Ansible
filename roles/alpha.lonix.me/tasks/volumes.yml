@@ -38,3 +38,11 @@
     opts: direct_io,defaults,allow_other,minfreespace=50G,fsname=mergerfs
     fstype: fuse.mergerfs
     state: mounted
+
+- name: Mount /mnt/cloud
+  mount:
+    name: /mnt/cloud
+    src: amazon_us
+    opts: read-only,config=/root/.rclone.conf,allow_other
+    fstype: fuse.rclone
+    state: mounted
