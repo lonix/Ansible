@@ -3,6 +3,7 @@
   become: true
   roles:
     - ansible-role-docker
+    - { role: ansible-role-rclone, rclone_version: 1.33 }
     - harden-linux
     - lonix-new
     - alpha.lonix.me
