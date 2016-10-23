@@ -39,10 +39,8 @@
     fstype: fuse.mergerfs
     state: mounted
 
-- name: Mount /mnt/cloud
-  mount:
-    name: /mnt/cloud
-    src: "amazon_us:"
-    opts: read-only,config=/root/.rclone.conf,allow_other
-    fstype: fuse.rclone
-    state: mounted
+- name: Install acd.service
+  file:
+    path: /etc/systemd/system/acd.service
+    src: etc/systemd/system/acd.service
+    state: present
