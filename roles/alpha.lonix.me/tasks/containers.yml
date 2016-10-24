@@ -82,7 +82,7 @@
 - name: couchpotato container
   docker_container:
     pull: true
-    name: couchpotato
+    name: cp
     image: linuxserver/couchpotato
     state: started
     network_mode: bridge
@@ -99,7 +99,7 @@
       # LETSENCRYPT_HOST: "{{ letsencrypt_hosts }}"
       # LETSENCRYPT_EMAIL: lonixx@gmail.com
       labels:
-        - "traefik.frontend.rule=PathPrefixStrip:/test"
+        - "traefik.frontend.rule=PathPrefixStrip:/cp"
 
 # - name: nzbhydra
 #   docker_container:
