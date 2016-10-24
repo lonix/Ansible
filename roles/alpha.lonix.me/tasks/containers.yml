@@ -77,7 +77,7 @@
       - 5050
     volumes:
       - /opt/couchpotato:/config
-      - /mnt/local/movies:/:/movies
+      - /mnt/local/movies:/movies
     env:
       PUID: 99
       PGID: 100
