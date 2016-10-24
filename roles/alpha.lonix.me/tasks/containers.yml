@@ -100,7 +100,7 @@
       # LETSENCRYPT_EMAIL: lonixx@gmail.com
       labels:
         - traefik.backend=couchpotato
-        - traefik.frontend.rule="Host:lonix.me,path=/cp"
+        - traefik.frontend.rule="Path:/cp"
 
 - name: nzbhydra
   docker_container:
