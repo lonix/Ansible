@@ -19,7 +19,7 @@
     volumes:
     - /var/run/docker.sock:/var/run/docker.sock
     - /dev/null:/traefik.toml
-    command: --web --acme --acme.domains='lonix.me' --acme.email='lonixx@gmail.com' --acme.entrypoint=https --acme.onhostrule --acme.ondemand --docker --docker.domain=lonix.me --logLevel=DEBUG
+    command: --web --acme --acme.domains='lonix.me' --acme.email='lonixx@gmail.com' --acme.entrypoint=https --acme.ondemand --docker --docker.domain=lonix.me --logLevel=DEBUG
 
 
 # - name: plex container
