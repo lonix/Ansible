@@ -100,7 +100,6 @@
       # LETSENCRYPT_EMAIL: lonixx@gmail.com
       labels:
         - "traefik.frontend.rule=PathPrefixStrip:/test"
-        - traefik.protocol=https
 
 # - name: nzbhydra
 #   docker_container:
