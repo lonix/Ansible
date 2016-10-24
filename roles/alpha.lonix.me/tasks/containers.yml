@@ -7,6 +7,20 @@
     hour: 07
     minute: 00
 
+- name: Træfik Proxy
+  docker_container:
+    name: traefik
+    image: traefik
+    state: started
+    ports:
+      - 80:80
+      - 8080:8080
+      - 443:443
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    - /dev/null:/traefik.toml
+    command: --web --docker --docker.domain=lonix.me --logLevel=DEBUG
+
 
 - name: plex container
   docker_container:
@@ -81,9 +95,12 @@
     env:
       PUID: 99
       PGID: 100
-      VIRTUAL_HOST: film.lonix.me
-      LETSENCRYPT_HOST: "{{ letsencrypt_hosts }}"
-      LETSENCRYPT_EMAIL: lonixx@gmail.com
+      # VIRTUAL_HOST: film.lonix.me
+      # LETSENCRYPT_HOST: "{{ letsencrypt_hosts }}"
+      # LETSENCRYPT_EMAIL: lonixx@gmail.com
+      labels:
+        - traefik.backend=couchpotato
+        - traefik.frontend.rule="Host:lonix.me,path=/cp"
 
 - name: nzbhydra
   docker_container:
@@ -145,36 +162,36 @@
       LETSENCRYPT_HOST: "{{ letsencrypt_hosts }}"
       LETSENCRYPT_EMAIL: lonixx@gmail.com
 
-- name: proxy
-  docker_container:
-    pull: true
-    name: proxy
-    image: jwilder/nginx-proxy
-    state: started
-    network_mode: bridge
-    restart_policy: always
-    ports:
-      - 80:80
-      - 443:443
-    volumes:
-      - /var/run/docker.sock:/tmp/docker.sock:ro
-      - /opt/proxy/cert:/etc/nginx/certs:ro
-      - /opt/proxy/vhost.d:/etc/nginx/vhost.d:rw
-      - /opt/proxy/html:/usr/share/nginx/html
+# - name: proxy
+#   docker_container:
+#     pull: true
+#     name: proxy
+#     image: jwilder/nginx-proxy
+#     state: started
+#     network_mode: bridge
+#     restart_policy: always
+#     ports:
+#       - 80:80
+#       - 443:443
+#     volumes:
+#       - /var/run/docker.sock:/tmp/docker.sock:ro
+#       - /opt/proxy/cert:/etc/nginx/certs:ro
+#       - /opt/proxy/vhost.d:/etc/nginx/vhost.d:rw
+#       - /opt/proxy/html:/usr/share/nginx/html
 
-- name: lets-encrypt
-  docker_container:
-    pull: true
-    name: letsencrypt
-    image: jrcs/letsencrypt-nginx-proxy-companion
-    state: started
-    network_mode: bridge
-    restart_policy: always
-    volumes:
-     - /var/run/docker.sock:/var/run/docker.sock:ro
-     - /opt/proxy/cert:/etc/nginx/certs:rw
-    volumes_from:
-     - proxy
+# - name: lets-encrypt
+#   docker_container:
+#     pull: true
+#     name: letsencrypt
+#     image: jrcs/letsencrypt-nginx-proxy-companion
+#     state: started
+#     network_mode: bridge
+#     restart_policy: always
+#     volumes:
+#      - /var/run/docker.sock:/var/run/docker.sock:ro
+#      - /opt/proxy/cert:/etc/nginx/certs:rw
+#     volumes_from:
+#      - proxy
 
 - name: sonarr
   docker_container:
