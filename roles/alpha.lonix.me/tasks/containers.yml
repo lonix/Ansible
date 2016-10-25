@@ -18,7 +18,9 @@
       - 443:443
     volumes:
     - /var/run/docker.sock:/var/run/docker.sock
-    - /dev/null:/traefik.toml
+    - /opt/traefik/traefik.toml:/traefik.toml
+    - /opt/traefik/acme.json:/acme.json
+    - /opt/traefik/log/:/log
     command: --web --acme --acme.domains='lonix.me' --acme.email='lonixx@gmail.com' --acme.entrypoint=https --acme.ondemand --docker --docker.domain=lonix.me --logLevel=DEBUG
 
 
@@ -98,8 +100,8 @@
       # VIRTUAL_HOST: film.lonix.me
       # LETSENCRYPT_HOST: "{{ letsencrypt_hosts }}"
       # LETSENCRYPT_EMAIL: lonixx@gmail.com
-      labels:
-        - "traefik.frontend.rule=PathPrefixStrip:/cp"
+    labels:
+      - "traefik.frontend.rule=Path:/cp"
 
 # - name: nzbhydra
 #   docker_container:
