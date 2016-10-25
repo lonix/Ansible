@@ -101,7 +101,7 @@
       # LETSENCRYPT_HOST: "{{ letsencrypt_hosts }}"
       # LETSENCRYPT_EMAIL: lonixx@gmail.com
     labels:
-      - "traefik.frontend.rule=Path:/cp"
+      - traefik.frontend.rule: Path:/cp
 
 # - name: nzbhydra
 #   docker_container:
