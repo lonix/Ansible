@@ -16,7 +16,7 @@
 
 - name: Create Acme Cert storage
   file:
-    path: /opt/traefik/acme.json
+    path: /opt/traefik/acme/acme.json
     state: touch
 
 - name: Træfik Proxy
