@@ -20,7 +20,7 @@
     - /var/run/docker.sock:/var/run/docker.sock
     - /opt/traefik/data/:/data
     - /opt/traefik/log/:/log
-    command: --web  --entryPoints='Name:http Address::80 Redirect.EntryPoint:https' --entryPoints='Name:https' Address::442 --traefiklogsfile=/logs/traefik.log  --accesslogsfile=/logs/access.log --acme --acme.domains='lonix.me' --acme.email='lonixx@gmail.com' --acme.entrypoint=https --acme.storage=/data/acme.json --acme.onhostrule --acme.ondemand --docker --docker.domain=lonix.me --logLevel=DEBUG
+    command: --web  --entryPoints='Name:http Address::80 Redirect.EntryPoint:https' --entryPoints='Name:https Address::443' --traefiklogsfile=/log/traefik.log  --accesslogsfile=/log/access.log --acme --acme.domains='lonix.me' --acme.email='lonixx@gmail.com' --acme.entrypoint=https --acme.storage=/data/acme.json --acme.onhostrule --acme.ondemand --docker --docker.domain=lonix.me --logLevel=DEBUG
 
 
 # - name: plex container
