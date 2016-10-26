@@ -10,7 +10,7 @@
 - name: Træfik Proxy
   docker_container:
     name: traefik
-    image: traefik
+    image: traefik:camembert
     state: started
     ports:
       - 80:80
@@ -18,10 +18,9 @@
       - 443:443
     volumes:
     - /var/run/docker.sock:/var/run/docker.sock
-    - /opt/traefik/traefik.toml:/traefik.toml
-    - /opt/traefik/acme.json:/acme.json
+    - /opt/traefik/data/:/data
     - /opt/traefik/log/:/log
-    command: --web --acme --acme.domains='lonix.me' --acme.email='lonixx@gmail.com' --acme.entrypoint=https --acme.ondemand --docker --docker.domain=lonix.me --logLevel=DEBUG
+    command: --web --acme --acme.domains='lonix.me' --acme.email='lonixx@gmail.com' --acme.entrypoint=https --acme.storage=/data/acme.json --acme.onhostrule --acme.ondemand --docker --docker.domain=lonix.me --logLevel=DEBUG
 
 
 # - name: plex container
@@ -100,8 +99,6 @@
       # VIRTUAL_HOST: film.lonix.me
       # LETSENCRYPT_HOST: "{{ letsencrypt_hosts }}"
       # LETSENCRYPT_EMAIL: lonixx@gmail.com
-    labels:
-      traefik.frontend.rule: Path:/cp
 
 # - name: nzbhydra
 #   docker_container:
@@ -125,19 +122,19 @@
 #
 #
 #
-# - name: nzbget
-#   docker_container:
-#     pull: true
-#     name: nzbget
-#     image: linuxserver/nzbget
-#     state: started
-#     network_mode: bridge
-#     restart_policy: always
-#     ports:
-#       - 6789
-#     volumes:
-#       - /opt/nzbget:/config
-#       - /opt/downloads:/downloads
+- name: nzbget
+  docker_container:
+    pull: true
+    name: nzbget
+    image: linuxserver/nzbget
+    state: started
+    network_mode: bridge
+    restart_policy: always
+    ports:
+      - 6789
+    volumes:
+      - /opt/nzbget:/config
+      - /opt/downloads:/downloads
 #
 #     env:
 #       PUID: 99
