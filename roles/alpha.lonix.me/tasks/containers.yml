@@ -30,7 +30,7 @@
       - 443:443
     volumes:
     - /var/run/docker.sock:/var/run/docker.sock
-    - /opt/traefik/acme.json:acme.json
+    - /opt/traefik/acme/acme.json:/etc/traefik/acme
     - /opt/traefik/traefik.toml:/etc/traefik/traefik.toml
 
 
