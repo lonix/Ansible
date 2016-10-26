@@ -31,7 +31,7 @@
     volumes:
     - /var/run/docker.sock:/var/run/docker.sock
     - /opt/traefik/log:/log
-    - /opt/traefik/acme/acme.json:/etc/traefik/acme
+    - /opt/traefik/acme:/etc/traefik/acme
     - /opt/traefik/traefik.toml:/etc/traefik/traefik.toml
 
 
