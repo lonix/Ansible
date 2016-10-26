@@ -7,6 +7,18 @@
     hour: 07
     minute: 00
 
+- name: Insert Træfik Config
+  copy:
+    src: opt/traefik/traefik.toml
+    dest: /opt/traefik/traefik.toml
+    owner: root
+    group: root
+
+- name: Create Acme Cert storage
+  file:
+    path: /opt/traefik/acme.json
+    state: touch
+
 - name: Træfik Proxy
   docker_container:
     name: traefik
@@ -18,9 +30,9 @@
       - 443:443
     volumes:
     - /var/run/docker.sock:/var/run/docker.sock
-    - /opt/traefik/data/:/data
+    - /opt/traefik/:acme.json
+    - /opt/traefik/:traefik.toml
     - /opt/traefik/log/:/log
-    command: --web  --entryPoints='Name:http Address::80 Redirect.EntryPoint:https' --entryPoints='Name:https Address::443' --traefiklogsfile=/log/traefik.log  --accesslogsfile=/log/access.log --acme --acme.domains='lonix.me' --acme.email='lonixx@gmail.com' --acme.entrypoint=https --acme.storage=/data/acme.json --acme.onhostrule --acme.ondemand --docker --docker.domain=lonix.me --logLevel=DEBUG
 
 
 # - name: plex container
