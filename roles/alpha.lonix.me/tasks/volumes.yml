@@ -1,7 +1,7 @@
 ---
 
-- name: Installing MergerFS
-  apt: deb=https://github.com/trapexit/mergerfs/releases/download/{{mergerfs_version}}/mergerfs_{{mergerfs_version}}.ubuntu-xenial_amd64.deb
+# - name: Installing MergerFS
+#   apt: deb=https://github.com/trapexit/mergerfs/releases/download/{{mergerfs_version}}/mergerfs_{{mergerfs_version}}.ubuntu-xenial_amd64.deb
 
 - name: Installing fuse
   apt: name=fuse
