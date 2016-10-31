@@ -1,226 +1,226 @@
----
-- name: Daliy Docker Container Restart
-  cron:
-    user: root
-    job: docker restart $(docker ps -q) > /dev/null
-    name: "Restart Docker Containers"
-    hour: 07
-    minute: 00
-
-- name: Insert Træfik Config
-  copy:
-    src: opt/traefik/traefik.toml
-    dest: /opt/traefik/traefik.toml
-    owner: root
-    group: root
-
-- name: Create Acme Cert storage
-  file:
-    path: /opt/traefik/acme/acme.json
-    state: touch
-
-- name: Træfik Proxy
-  docker_container:
-    name: traefik
-    image: traefik:camembert
-    state: started
-    ports:
-      - 80:80
-      - 8080:8080
-      - 443:443
-    volumes:
-    - /var/run/docker.sock:/var/run/docker.sock
-    - /opt/traefik/log:/log
-    - /opt/traefik/acme:/etc/traefik/acme
-    - /opt/traefik/traefik.toml:/etc/traefik/traefik.toml
-
-
-
-# - name: plex container
+# ---
+# - name: Daliy Docker Container Restart
+#   cron:
+#     user: root
+#     job: docker restart $(docker ps -q) > /dev/null
+#     name: "Restart Docker Containers"
+#     hour: 07
+#     minute: 00
+#
+# - name: Insert Træfik Config
+#   copy:
+#     src: opt/traefik/traefik.toml
+#     dest: /opt/traefik/traefik.toml
+#     owner: root
+#     group: root
+#
+# - name: Create Acme Cert storage
+#   file:
+#     path: /opt/traefik/acme/acme.json
+#     state: touch
+#
+# - name: Træfik Proxy
 #   docker_container:
-#     name: plex
-#     image: linuxserver/plex
+#     name: traefik
+#     image: traefik:camembert
 #     state: started
-#     pull: true
-#     network_mode: host
-#     restart_policy: always
-#     volumes:
-#     - /opt/plex:/config
-#     - /mnt/pool:/media
-#     env:
-#       PUID: 99
-#       PGID: 100
-#       VERSION: latest
-#
-# - name: plexpy container
-#   docker_container:
-#     pull: true
-#     name: plexpy
-#     image: linuxserver/plexpy
-#     state: started
-#     network_mode: bridge
-#     restart_policy: always
-#     ports:
-#       - 8181
-#     volumes:
-#       - /opt/plexpy:/config
-#       - /opt/plex/Library/Application Support/Plex Media Server/Logs/:/logs
-#     env:
-#       PUID: 99
-#       PGID: 100
-#       VIRTUAL_HOST: plexpy.lonix.me
-#       LETSENCRYPT_HOST: "{{ letsencrypt_hosts }}"
-#       LETSENCRYPT_EMAIL: lonixx@gmail.com
-#
-# - name: plexrequest container
-#   docker_container:
-#     pull: true
-#     name: plexrequests
-#     image: aptalca/docker-plexrequests
-#     state: started
-#     network_mode: bridge
-#     restart_policy: always
-#     ports:
-#      - 3000
-#     volumes:
-#      - /etc/localtime:/etc/localtime:ro
-#      - /opt/plexrequests:/config:rw
-#     env:
-#       BRANCH: master
-#       VIRTUAL_HOST: requests.lonix.me
-#       LETSENCRYPT_HOST: "{{ letsencrypt_hosts }}"
-#       LETSENCRYPT_EMAIL: lonixx@gmail.com
-#
-#
-#
-- name: couchpotato container
-  docker_container:
-    pull: true
-    name: cp
-    image: linuxserver/couchpotato
-    state: started
-    network_mode: bridge
-    restart_policy: always
-    ports:
-      - 5050
-    volumes:
-      - /opt/couchpotato:/config
-      - /mnt/local/movies:/movies
-    env:
-      PUID: 99
-      PGID: 100
-      # VIRTUAL_HOST: film.lonix.me
-      # LETSENCRYPT_HOST: "{{ letsencrypt_hosts }}"
-      # LETSENCRYPT_EMAIL: lonixx@gmail.com
-
-# - name: nzbhydra
-#   docker_container:
-#     pull: true
-#     name: nzbhydra
-#     image: linuxserver/hydra
-#     state: started
-#     network_mode: bridge
-#     restart_policy: always
-#     ports:
-#       - 5075
-#     volumes:
-#       - /opt/nzbhydra/config:/config
-#       - /opt/nzbhydra/downloads:/downloads
-#     env:
-#       PUID: 99
-#       PGID: 100
-#       VIRTUAL_HOST: hydra.lonix.me
-#       LETSENCRYPT_HOST: "{{ letsencrypt_hosts }}"
-#       LETSENCRYPT_EMAIL: lonixx@gmail.com
-#
-#
-#
-- name: nzbget
-  docker_container:
-    pull: true
-    name: nzbget
-    image: linuxserver/nzbget
-    state: started
-    network_mode: bridge
-    restart_policy: always
-    ports:
-      - 6789
-    volumes:
-      - /opt/nzbget:/config
-      - /opt/downloads:/downloads
-#
-#     env:
-#       PUID: 99
-#       PGID: 100
-#       VIRTUAL_HOST: download.lonix.me
-#       LETSENCRYPT_HOST: "{{ letsencrypt_hosts }}"
-#       LETSENCRYPT_EMAIL: lonixx@gmail.com
-#
-# - name: ghost
-#   docker_container:
-#     pull: true
-#     name: ghost
-#     image: ghost
-#     state: started
-#     network_mode: bridge
-#     restart_policy: always
-#     ports:
-#      - 2368
-#     volumes:
-#      - /opt/ghost:/var/lib/ghost
-#     env:
-#       VIRTUAL_HOST: lonix.me
-#       LETSENCRYPT_HOST: "{{ letsencrypt_hosts }}"
-#       LETSENCRYPT_EMAIL: lonixx@gmail.com
-
-# - name: proxy
-#   docker_container:
-#     pull: true
-#     name: proxy
-#     image: jwilder/nginx-proxy
-#     state: started
-#     network_mode: bridge
-#     restart_policy: always
 #     ports:
 #       - 80:80
+#       - 8080:8080
 #       - 443:443
 #     volumes:
-#       - /var/run/docker.sock:/tmp/docker.sock:ro
-#       - /opt/proxy/cert:/etc/nginx/certs:ro
-#       - /opt/proxy/vhost.d:/etc/nginx/vhost.d:rw
-#       - /opt/proxy/html:/usr/share/nginx/html
-
-# - name: lets-encrypt
+#     - /var/run/docker.sock:/var/run/docker.sock
+#     - /opt/traefik/log:/log
+#     - /opt/traefik/acme:/etc/traefik/acme
+#     - /opt/traefik/traefik.toml:/etc/traefik/traefik.toml
+#
+#
+#
+# # - name: plex container
+# #   docker_container:
+# #     name: plex
+# #     image: linuxserver/plex
+# #     state: started
+# #     pull: true
+# #     network_mode: host
+# #     restart_policy: always
+# #     volumes:
+# #     - /opt/plex:/config
+# #     - /mnt/pool:/media
+# #     env:
+# #       PUID: 99
+# #       PGID: 100
+# #       VERSION: latest
+# #
+# # - name: plexpy container
+# #   docker_container:
+# #     pull: true
+# #     name: plexpy
+# #     image: linuxserver/plexpy
+# #     state: started
+# #     network_mode: bridge
+# #     restart_policy: always
+# #     ports:
+# #       - 8181
+# #     volumes:
+# #       - /opt/plexpy:/config
+# #       - /opt/plex/Library/Application Support/Plex Media Server/Logs/:/logs
+# #     env:
+# #       PUID: 99
+# #       PGID: 100
+# #       VIRTUAL_HOST: plexpy.lonix.me
+# #       LETSENCRYPT_HOST: "{{ letsencrypt_hosts }}"
+# #       LETSENCRYPT_EMAIL: lonixx@gmail.com
+# #
+# # - name: plexrequest container
+# #   docker_container:
+# #     pull: true
+# #     name: plexrequests
+# #     image: aptalca/docker-plexrequests
+# #     state: started
+# #     network_mode: bridge
+# #     restart_policy: always
+# #     ports:
+# #      - 3000
+# #     volumes:
+# #      - /etc/localtime:/etc/localtime:ro
+# #      - /opt/plexrequests:/config:rw
+# #     env:
+# #       BRANCH: master
+# #       VIRTUAL_HOST: requests.lonix.me
+# #       LETSENCRYPT_HOST: "{{ letsencrypt_hosts }}"
+# #       LETSENCRYPT_EMAIL: lonixx@gmail.com
+# #
+# #
+# #
+# - name: couchpotato container
 #   docker_container:
 #     pull: true
-#     name: letsencrypt
-#     image: jrcs/letsencrypt-nginx-proxy-companion
-#     state: started
-#     network_mode: bridge
-#     restart_policy: always
-#     volumes:
-#      - /var/run/docker.sock:/var/run/docker.sock:ro
-#      - /opt/proxy/cert:/etc/nginx/certs:rw
-#     volumes_from:
-#      - proxy
-
-# - name: sonarr
-#   docker_container:
-#     pull: true
-#     name: sonarr
-#     image: linuxserver/sonarr
+#     name: cp
+#     image: linuxserver/couchpotato
 #     state: started
 #     network_mode: bridge
 #     restart_policy: always
 #     ports:
-#       - 8989
+#       - 5050
 #     volumes:
-#       - /opt/sonarr:/config
-#       - /opt/downloads:/downloads
-#       - /mnt/local/tv:/tv
+#       - /opt/couchpotato:/config
+#       - /mnt/local/movies:/movies
 #     env:
 #       PUID: 99
 #       PGID: 100
-#       VIRTUAL_HOST: tv.lonix.me
-#       LETSENCRYPT_HOST: "{{ letsencrypt_hosts }}"
-#       LETSENCRYPT_EMAIL: lonixx@gmail.com
+#       # VIRTUAL_HOST: film.lonix.me
+#       # LETSENCRYPT_HOST: "{{ letsencrypt_hosts }}"
+#       # LETSENCRYPT_EMAIL: lonixx@gmail.com
+#
+# # - name: nzbhydra
+# #   docker_container:
+# #     pull: true
+# #     name: nzbhydra
+# #     image: linuxserver/hydra
+# #     state: started
+# #     network_mode: bridge
+# #     restart_policy: always
+# #     ports:
+# #       - 5075
+# #     volumes:
+# #       - /opt/nzbhydra/config:/config
+# #       - /opt/nzbhydra/downloads:/downloads
+# #     env:
+# #       PUID: 99
+# #       PGID: 100
+# #       VIRTUAL_HOST: hydra.lonix.me
+# #       LETSENCRYPT_HOST: "{{ letsencrypt_hosts }}"
+# #       LETSENCRYPT_EMAIL: lonixx@gmail.com
+# #
+# #
+# #
+# - name: nzbget
+#   docker_container:
+#     pull: true
+#     name: nzbget
+#     image: linuxserver/nzbget
+#     state: started
+#     network_mode: bridge
+#     restart_policy: always
+#     ports:
+#       - 6789
+#     volumes:
+#       - /opt/nzbget:/config
+#       - /opt/downloads:/downloads
+# #
+# #     env:
+# #       PUID: 99
+# #       PGID: 100
+# #       VIRTUAL_HOST: download.lonix.me
+# #       LETSENCRYPT_HOST: "{{ letsencrypt_hosts }}"
+# #       LETSENCRYPT_EMAIL: lonixx@gmail.com
+# #
+# # - name: ghost
+# #   docker_container:
+# #     pull: true
+# #     name: ghost
+# #     image: ghost
+# #     state: started
+# #     network_mode: bridge
+# #     restart_policy: always
+# #     ports:
+# #      - 2368
+# #     volumes:
+# #      - /opt/ghost:/var/lib/ghost
+# #     env:
+# #       VIRTUAL_HOST: lonix.me
+# #       LETSENCRYPT_HOST: "{{ letsencrypt_hosts }}"
+# #       LETSENCRYPT_EMAIL: lonixx@gmail.com
+#
+# # - name: proxy
+# #   docker_container:
+# #     pull: true
+# #     name: proxy
+# #     image: jwilder/nginx-proxy
+# #     state: started
+# #     network_mode: bridge
+# #     restart_policy: always
+# #     ports:
+# #       - 80:80
+# #       - 443:443
+# #     volumes:
+# #       - /var/run/docker.sock:/tmp/docker.sock:ro
+# #       - /opt/proxy/cert:/etc/nginx/certs:ro
+# #       - /opt/proxy/vhost.d:/etc/nginx/vhost.d:rw
+# #       - /opt/proxy/html:/usr/share/nginx/html
+#
+# # - name: lets-encrypt
+# #   docker_container:
+# #     pull: true
+# #     name: letsencrypt
+# #     image: jrcs/letsencrypt-nginx-proxy-companion
+# #     state: started
+# #     network_mode: bridge
+# #     restart_policy: always
+# #     volumes:
+# #      - /var/run/docker.sock:/var/run/docker.sock:ro
+# #      - /opt/proxy/cert:/etc/nginx/certs:rw
+# #     volumes_from:
+# #      - proxy
+#
+# # - name: sonarr
+# #   docker_container:
+# #     pull: true
+# #     name: sonarr
+# #     image: linuxserver/sonarr
+# #     state: started
+# #     network_mode: bridge
+# #     restart_policy: always
+# #     ports:
+# #       - 8989
+# #     volumes:
+# #       - /opt/sonarr:/config
+# #       - /opt/downloads:/downloads
+# #       - /mnt/local/tv:/tv
+# #     env:
+# #       PUID: 99
+# #       PGID: 100
+# #       VIRTUAL_HOST: tv.lonix.me
+# #       LETSENCRYPT_HOST: "{{ letsencrypt_hosts }}"
+# #       LETSENCRYPT_EMAIL: lonixx@gmail.com
