@@ -7,3 +7,6 @@
 [submodule "roles/ansible-role-rclone"]
 	path = roles/ansible-role-rclone
 	url = https://github.com/stefangweichinger/ansible-rclone
+[submodule "roles/ansible-role-sysdig"]
+	path = roles/ansible-role-sysdig
+	url = https://github.com/jebovic/ansible-sysdig
