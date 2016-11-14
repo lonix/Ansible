@@ -1,5 +1,6 @@
 ---
  - include: os-update.yml
+ - include: nfs.yml
  - include: storage.yml
  - include: rsnapshot.yml
  - include: docker.yml

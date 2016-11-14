@@ -1,0 +1,25 @@
+---
+- name: Ensure nfs-kernel-server is present
+  become: true
+  apt:
+  	name: nfs-kernel-server
+  	state: present
+  	
+- name: NFS Shares
+  copy:
+    src: etc/exports
+    dest: /etc/exports
+    owner: root
+    group: root
+  notify:
+    - exportfs
+    - restart nfs service
+
+- name: Enable Services
+  service:
+    name: nfs-kernel-server
+    enabled: yes
+  notify: 
+    - start nfs service
+    - start samba service
+

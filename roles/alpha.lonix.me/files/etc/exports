@@ -1,0 +1,4 @@
+# /etc/exports
+
+
+/opt/nfs     *(rw,sync,no_root_squash)
