@@ -6,8 +6,8 @@
     state: present
     update_cache: yes
 
-- name: Ensure acd-cli is present
+- name: Ensure acd-cli is latest
   pip:
-    name: git+https://github.com/yadayada/acd_cli.git
-    state: present
+    name: 'git+https://github.com/yadayada/acd_cli.git'
+    state: latest
   become: true
