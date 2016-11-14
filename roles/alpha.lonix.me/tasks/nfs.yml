@@ -2,9 +2,9 @@
 - name: Ensure nfs-kernel-server is present
   become: true
   apt:
-  	name: nfs-kernel-server
-  	state: present
-  	
+    name: nfs-kernel-server
+    state: present
+    
 - name: NFS Shares
   copy:
     src: etc/exports
