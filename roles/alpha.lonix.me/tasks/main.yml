@@ -6,4 +6,5 @@
  - include: ssmtp.yml
  - include: tmate.yml
  - include: rsnapshot.yml
+ - include: acdcli.yml
  
