@@ -1,9 +1,9 @@
 
 Vagrant.configure(2) do |config|
-  config.vm.box = "ubuntu/trusty64"
+  config.vm.box = "centos/7"
 
   config.vm.provider :virtualbox do |vm|
-    vm.name = "ansible"
+    vm.name = "ansible-dev"
     vm.memory = 2048
     vm.cpus = 2
   end

@@ -3,7 +3,3 @@
    sudo: true
    roles:
     - ansible-role-docker
-    - ansible-role-snapraid
-    - memoria-core
-    - lonix
-    - harden-linux
