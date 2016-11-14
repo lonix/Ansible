@@ -1,5 +1,6 @@
 ---
  - include: os-update.yml
+ - include: nfs.yml
  - include: volumes.yml
  - include: groups.yml
  - include: keybase.yml

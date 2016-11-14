@@ -31,7 +31,6 @@ mount_points:
   - disk3
   - local
 #  - cloud
-  - media
   - backup
 
 mergerfs_version: 2.16.1

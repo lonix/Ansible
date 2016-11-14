@@ -1,0 +1,7 @@
+#!/bin/bash
+
+source $HOME/.bash_profile
+
+acdcli sync
+
+acdcli upload -x 10 /mnt/local /
