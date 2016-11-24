@@ -1,0 +1,12 @@
+---
+- name: Ensure Rancher is running
+  docker_container:
+    name: rancerserver
+    image: rancher/server
+    volumes:
+      - /opt/rancher:/var/lib/mysql
+    published_ports:
+      - 8080:8080
+    restart_policy: unless-stopped
+
+
