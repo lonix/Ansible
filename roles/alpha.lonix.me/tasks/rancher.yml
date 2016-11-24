@@ -2,7 +2,7 @@
 - name: Ensure Rancher is running
   docker_container:
     name: rancerserver
-    image: rancher/server
+    image: rancher/server:v1.1.4
     volumes:
       - /opt/rancher:/var/lib/mysql
     published_ports:
