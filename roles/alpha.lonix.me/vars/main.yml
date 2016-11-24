@@ -17,6 +17,7 @@ packages:
   - aptitude
   - mediainfo
   - ssmtp
+  - ffmpeg
 
 
 drives:
