@@ -111,4 +111,4 @@
     volumes:
       - /opt/plex/Library/Application Support/Plex Media Server/Logs:/logs:ro
       - /opt/plexpy:/config
-      links: plex:plex
+    links: plex:plex
