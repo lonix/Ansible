@@ -99,7 +99,7 @@
     volumes: /opt/ombi:/config
     links: plex:plex
     labels:
-      traefik.port "3579"
+      traefik.port: "3579"
 
 - name: plexpy
   tags: containers
