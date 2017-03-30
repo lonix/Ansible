@@ -1,12 +1,28 @@
 ---
-- name: Ensure Rancher is running
+- name: Traefik
   docker_container:
-    name: rancerserver
-    image: rancher/server:v1.4.0-rc2
+    name: traefik
+    image: traefik
     volumes:
-      - /opt/rancher:/var/lib/mysql
-    published_ports:
-      - 8080:8080
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /opt/traefik/acme:/etc/traefik/acme
+      - /opt/traefik/traefik.toml:/traefik.toml
+    ports:
+      - 443:443/tcp
+      - 80:80/tcp
+      - 9000:9000/tcp
     restart_policy: unless-stopped
+    state: reloaded
 
-
+- name: Resillio Sync
+  docker_container:
+    name: sync
+    image: resilio/sync
+    volumes:
+      - /opt/sync:/mnt/sync
+      - /mnt/backup:/mnt/mounted_folders/alpha-backup
+      - /opt/factorio:/mnt/factorio
+    ports:
+      - 55555:5555/tcp
+    labels:
+      - traefik.port: '8888'
