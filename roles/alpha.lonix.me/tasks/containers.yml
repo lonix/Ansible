@@ -1,5 +1,7 @@
 ---
-- include_vars: vault.yml 
+- include_vars: vault.yml
+  tags: containers
+  
 - name: Traefik Reverse Proxy
   tags: containers
   docker_container:
