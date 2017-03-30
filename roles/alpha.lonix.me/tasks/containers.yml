@@ -25,5 +25,5 @@
     ports:
       - 55555:5555/tcp
     labels:
-      - traefik.port: '8888'
+      traefik.port: 8888
     state: started
