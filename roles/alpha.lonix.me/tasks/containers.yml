@@ -106,9 +106,9 @@
   docker_container:
     name: plexpy
     image: linuxserver/plexpy
-  env:
+    env:
     TZ: "Europe/Oslo"
-  volumes:
-    - /opt/plex/Library/Application Support/Plex Media Server/Logs:/logs:ro
-    - /opt/plexpy:/config
-  links: plex:plex
+    volumes:
+      - /opt/plex/Library/Application Support/Plex Media Server/Logs:/logs:ro
+      - /opt/plexpy:/config
+      links: plex:plex
