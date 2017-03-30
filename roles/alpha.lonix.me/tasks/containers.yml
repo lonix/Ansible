@@ -1,7 +1,7 @@
 ---
 - include_vars: vault.yml
   tags: containers
-  
+
 - name: Traefik Reverse Proxy
   tags: containers
   docker_container:
@@ -47,7 +47,7 @@
       API_KEY: "{{ datadog_key }}"
       SD_BACKEND: docker
     labels:
-      traefik.enable: false
+      traefik.enable: "false"
 
 - name: PostgresSQL
   tags: containers
@@ -62,7 +62,7 @@
     volumes:
       - /opt/postgres:/var/lib/postgresql/data
     labels:
-      traefik.enable: false
+      traefik.enable: "false"
 
 - name: Quassel IRC
   tags: containers
@@ -75,4 +75,4 @@
       - /opt/quassel:/config
       - /etc/localtime:/etc/localtime:ro
     labels:
-      traefik.enable: false
+      traefik.enable: "false"
