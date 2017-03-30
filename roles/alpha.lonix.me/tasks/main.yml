@@ -3,10 +3,9 @@
  - include: nfs.yml
  - include: volumes.yml
  - include: groups.yml
- - include: rancher.yml
+ - include: containers.yml
  - include: keybase.yml
  - include: ssmtp.yml
  - include: tmate.yml
  - include: rsnapshot.yml
 # - include: acdcli.yml
- 
