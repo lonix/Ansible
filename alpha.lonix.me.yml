@@ -3,7 +3,7 @@
   become: true
   roles:
     - ansible-role-docker
-    - { role: ansible-role-rclone, rclone_version: 1.34 }
+    - { role: ansible-role-rclone, rclone_version: 1.36 }
     - ansible-role-sysdig
     - harden-linux
     - lonix-new
