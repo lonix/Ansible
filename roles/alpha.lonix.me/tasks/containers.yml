@@ -112,3 +112,42 @@
       - /opt/plex/Library/Application Support/Plex Media Server/Logs:/logs:ro
       - /opt/plexpy:/config
     links: plex:plex
+
+- name: Nzbget
+  tags:  containers
+  docker_container:
+    name: nzbget
+    image: linuxserver/nzbget
+    volumes:
+      - /opt/nzbget:/config
+      - /opt/download:/download
+    labels:
+      traefik.port: "6789"
+      
+- name: Radarr
+  tags: containers
+  docker_container:
+    name: radarr
+    image: linuxserver/radarr
+    env:
+      TZ: "Europe\Oslo"
+    volumes:
+      - /opt/download:/download
+      - /opt/radarr:/config
+      - /mnt/local/film:/movies
+    links:  nzbget:nzget
+    labels:
+      traefik.port: "7878"
+
+- name: Sonarr
+  tags: containers
+  docker_container:
+      name: sonarr
+      image: linuxserver/sonarr
+      volumes:
+        - /opt/sonarr:/config
+        - /opt/download:/download
+        - /mnt/local/tv:/tv
+      links: nzbget:nzget
+      labels:
+        traefik.port: "8989"
