@@ -15,7 +15,6 @@
     labels:
       traefik.port: "9000"
     restart_policy: unless-stopped
-    state: started
 
 - name: Resillio Sync
   tags: containers
@@ -30,7 +29,6 @@
       - 55555:5555/tcp
     labels:
       traefik.port: "8888"
-    state: started
 
 
 - name: Datadog Agent
@@ -45,5 +43,33 @@
     env:
       API_KEY: "{{ datadog_key }}"
       SD_BACKEND: docker
+    labels:
+      traefik.enable: false
+
+- name: PostgresSQL
+  tags: containers
+  docker_container:
+    name: postgres
+    image: postgres:9
+    env:
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_DB: quassel
+      POSTGRES_PASSWORD: quassel
+      POSTGRES_USER: quassel
+    volumes:
+      - /opt/postgres:/var/lib/postgresql/data
+    labels:
+      traefik.enable: false
+
+- name: Quassel IRC
+  tags: containers
+  docker_container:
+    name: quassel
+    image: linuxserver/quassel-core
+    ports:  4242:4242/tcp
+    links: postgres:postgres
+    volumes:
+      - /opt/quassel:/config
+      - /etc/localtime:/etc/localtime:ro
     labels:
       traefik.enable: false
