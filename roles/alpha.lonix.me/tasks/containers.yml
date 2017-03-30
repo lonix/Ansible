@@ -107,7 +107,7 @@
     name: plexpy
     image: linuxserver/plexpy
     env:
-    TZ: "Europe/Oslo"
+      TZ: "Europe/Oslo"
     volumes:
       - /opt/plex/Library/Application Support/Plex Media Server/Logs:/logs:ro
       - /opt/plexpy:/config
