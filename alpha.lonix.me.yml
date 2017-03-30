@@ -1,5 +1,5 @@
 ---
-- hosts: alpha.lonix.me
+- hosts: all
   become: true
   roles:
     - ansible-role-docker
