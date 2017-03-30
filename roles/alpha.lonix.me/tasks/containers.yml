@@ -12,7 +12,7 @@
       - 80:80/tcp
       - 9000:9000/tcp
     restart_policy: unless-stopped
-    state: "reloaded"
+    state: started
 
 - name: Resillio Sync
   docker_container:
@@ -26,4 +26,4 @@
       - 55555:5555/tcp
     labels:
       - traefik.port: '8888'
-    state: "reloaded"
+    state: started
