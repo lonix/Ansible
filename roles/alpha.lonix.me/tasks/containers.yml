@@ -28,4 +28,4 @@
     labels:
       traefik.port: "8888"
     state: started
-    tags: containers
+  tags: containers
