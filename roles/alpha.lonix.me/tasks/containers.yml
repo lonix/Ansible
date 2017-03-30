@@ -45,3 +45,5 @@
     env:
       API_KEY: "{{ datadog_key }}"
       SD_BACKEND: docker
+    labels:
+      traefik.enable: false
