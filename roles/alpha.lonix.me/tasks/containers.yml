@@ -123,14 +123,14 @@
       - /opt/download:/download
     labels:
       traefik.port: "6789"
-      
+
 - name: Radarr
   tags: containers
   docker_container:
     name: radarr
     image: linuxserver/radarr
     env:
-      TZ: "Europe\Oslo"
+      TZ: "Europe/Oslo"
     volumes:
       - /opt/download:/download
       - /opt/radarr:/config
