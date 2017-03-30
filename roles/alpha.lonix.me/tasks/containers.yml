@@ -76,3 +76,39 @@
       - /etc/localtime:/etc/localtime:ro
     labels:
       traefik.enable: "false"
+
+- name: PMS (Plex Media Server)
+  tags: containers
+  docker_container:
+    name: plex
+    image: linuxserver/plex
+    env:
+      tz: "Europe/Oslo"
+      version: "latest"
+    volumes:
+      - /opt/plex:/config
+      - /mnt/local:/media
+    labels:
+      traefik.enable: "false"
+
+- name: Ombi (PlexRequests)
+  tags: containers
+  docker_container:
+    name: ombi
+    image: rogueosb/ombi
+    volumes: /opt/ombi:/config
+    links: plex:plex
+    labels:
+      traefik.port "3579"
+
+- name: plexpy
+  tags: containers
+  docker_container:
+    name: plexpy
+    image: linuxserver/plexpy
+  env:
+    TZ: "Europe/Oslo"
+  volumes:
+    - /opt/plex/Library/Application Support/Plex Media Server/Logs:/logs:ro
+    - /opt/plexpy:/config
+  links: plex:plex
