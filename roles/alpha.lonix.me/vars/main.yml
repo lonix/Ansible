@@ -35,5 +35,3 @@ mount_points:
   - backup
 
 mergerfs_version: 2.16.1
-
-letsencrypt_hosts: lonix.me,tv.lonix.me,sky.lonix.me,download.lonix.me,hydra.lonix.me,film.lonix.me,plexpy.lonix.me,requests.lonix.me,unifi.lonix.me
