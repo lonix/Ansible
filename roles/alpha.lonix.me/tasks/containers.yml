@@ -10,7 +10,9 @@
     ports:
       - 443:443/tcp
       - 80:80/tcp
-      - 9000:9000/tcp
+      - 9000/tcp
+    labels:
+      traefik.port: "9000"
     restart_policy: unless-stopped
     state: started
   tags: containers
