@@ -34,4 +34,4 @@ mount_points:
 #  - cloud
   - backup
 
-mergerfs_version: 2.16.1
+mergerfs_version: 2.20.0
