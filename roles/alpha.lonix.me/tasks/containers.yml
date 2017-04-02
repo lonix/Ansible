@@ -133,7 +133,7 @@
     env:
       TZ: "Europe/Oslo"
     volumes:
-      - /opt/download:/downloads
+      - /opt/download:/downloas
       - /opt/radarr:/config
       - /mnt/local/film:/movies
     links:  nzbget:nzget
