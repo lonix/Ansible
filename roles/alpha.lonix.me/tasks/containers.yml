@@ -82,6 +82,7 @@
   docker_container:
     name: plex
     image: linuxserver/plex
+    network_mode: host   
     env:
       tz: "Europe/Oslo"
       version: "latest"
