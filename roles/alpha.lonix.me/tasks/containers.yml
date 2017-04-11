@@ -84,8 +84,8 @@
     image: linuxserver/plex
     network_mode: host   
     env:
-      tz: "Europe/Oslo"
-      version: "latest"
+      TZ: "Europe/Oslo"
+      VERSION: "latest"
     volumes:
       - /opt/plex:/config
       - /mnt/local:/media
