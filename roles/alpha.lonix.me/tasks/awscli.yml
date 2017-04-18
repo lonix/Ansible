@@ -1,0 +1,21 @@
+---
+- name: Ensure pip3 is present
+  apt:
+    name: python3-pip
+    state: present
+    update_cache: yes
+
+- name: Ensure pip is latest
+  pip: 
+    name: pip
+    state: latest
+  become: true
+
+- name: Ensure awscli is latest
+  pip:
+    name: "{{ item }}"
+    state: lateste
+  become: true
+  with_items:
+    - awscli
+    - aws-shell
