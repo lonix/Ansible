@@ -14,7 +14,7 @@
 - name: Ensure awscli is latest
   pip:
     name: "{{ item }}"
-    state: lateste
+    state: latest
   become: true
   with_items:
     - awscli
