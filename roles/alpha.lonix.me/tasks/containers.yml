@@ -98,7 +98,6 @@
     name: ombi
     image: rogueosb/ombi
     volumes: /opt/ombi:/config
-    links: plex:plex
     labels:
       traefik.port: "3579"
 
@@ -112,7 +111,6 @@
     volumes:
       - /opt/plex/Library/Application Support/Plex Media Server/Logs:/logs:ro
       - /opt/plexpy:/config
-    links: plex:plex
 
 - name: Nzbget
   tags:  containers
