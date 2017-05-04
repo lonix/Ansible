@@ -9,3 +9,4 @@
     - lonix-new
     - ironicbadger
     - alpha.lonix.me
+    - { role: Datadog.datadog }

@@ -1,6 +1,5 @@
 ---
  - include: os-update.yml
- # - include: nfs.yml
  - include: volumes.yml
  - include: groups.yml
  - include: containers.yml
@@ -9,4 +8,5 @@
  - include: tmate.yml
  - include: rsnapshot.yml
  - include: awscli.yml
+# - include: nfs.yml
 # - include: acdcli.yml
