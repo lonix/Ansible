@@ -7,3 +7,4 @@ nixstats.tar.gz
 .swp
 .vagrant
 *.log
+callback_plugins/datadog_callback.yml
