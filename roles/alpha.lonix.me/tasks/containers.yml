@@ -27,7 +27,6 @@
     volumes:
       - /opt/sync:/mnt/sync
       - /mnt/backup:/mnt/mounted_folders/alpha-backup
-      - /opt/factorio:/mnt/factorio
     ports:
       - 55555:5555/tcp
     labels:
