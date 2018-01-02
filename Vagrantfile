@@ -7,7 +7,7 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.define "deb" do |deb|
-    deb.vm.box = "boxcutter/ubuntu1604"
+    deb.vm.box = "bento/ubuntu-16.04"
     deb.vm.hostname = "ubuntu1604"
     deb.vm.synced_folder ".", "/vagrant", type: "virtualbox"
     deb.vm.provider :virtualbox do |vm|
@@ -18,7 +18,7 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.define "yum" do |yum|
-    yum.vm.box = "boxcutter/centos72"
+    yum.vm.box = "bento/centos-7.2"
     yum.vm.hostname = "centos72"
     yum.vm.synced_folder ".", "/vagrant", type: "virtualbox"
     yum.vm.provider :virtualbox do |vm|
