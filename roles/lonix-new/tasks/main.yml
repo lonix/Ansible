@@ -1,5 +1,7 @@
 ---
 - name: Add lonix to the system
+  tags:
+    - configuration
   user:
     name=lonix
     append=yes
@@ -7,6 +9,8 @@
     shell=/bin/zsh
 
 - name: Add ssh keys from github
+  tags:
+   - configuration
   authorized_key:
     user=lonix
     key=https://github.com/lonix.keys
