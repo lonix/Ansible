@@ -1,3 +1,0 @@
----
- - name: Ensure lonix is member of the right groups
-   user: name=lonix groups=docker,vboxusers append=yes

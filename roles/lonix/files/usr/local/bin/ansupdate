@@ -1,4 +1,0 @@
-#!/bin/bash
-
-git -C /home/lonix/Ansible pull 
-ansible-playbook  /home/lonix/Ansible/memoria.yml --vault-password-file  ~/.vault-password.txt

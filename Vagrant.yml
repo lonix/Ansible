@@ -1,5 +1,0 @@
----
- - hosts: all
-   sudo: true
-   roles:
-    - ansible-role-docker
