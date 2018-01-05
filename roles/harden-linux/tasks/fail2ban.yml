@@ -7,22 +7,21 @@
      cache_valid_time: 300
    notify:
     - systemd daemon-reload
-     
 
  - name: Copy jail configs
-   copy: 
+   copy:
      src: etc/fail2ban/jail.d/
      dest: /etc/fail2ban/jail.d/
      mode: 644
-     owner: root 
+     owner: root
      group: root
    notify:
     - restart fail2ban service
 
  - name: Delete default fail2ban config.
-   file: 
+   file:
      path: /etc/fail2ban/conf.d/defaults-debian.conf
      state: absent
-   notify: 
+   notify:
     - restart fail2ban service
     - restart ssh service
