@@ -22,6 +22,7 @@
 - name: Resillio Sync
   tags: containers
   docker_container:
+    state: absent
     name: sync
     image: resilio/sync
     volumes:
