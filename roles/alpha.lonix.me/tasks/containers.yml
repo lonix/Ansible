@@ -81,7 +81,7 @@
   docker_container:
     name: plex
     image: linuxserver/plex
-    network_mode: host   
+    network_mode: host
     env:
       TZ: "Europe/Oslo"
       VERSION: "latest"
@@ -149,3 +149,13 @@
       links: nzbget:nzget
       labels:
         traefik.port: "8989"
+
+- name: Heimdall
+  tags: containers
+  docker_container:
+      name: heimdall
+      image: linuxserver/heimdall
+      volumes:
+        - /opt/heimdall:/config
+      labels:
+        traefik.port: "80"
